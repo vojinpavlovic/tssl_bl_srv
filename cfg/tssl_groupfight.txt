@@ -1,0 +1,4 @@
+ServerName [TSSL] Groupfighting
+GameType Battle
+start_game
+start_mission
