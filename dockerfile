@@ -69,6 +69,9 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 # Copy the runtime files to the Bannerlord server directory
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
+# Copy the configuration file from the host to the container
+COPY /cfg/tssl_groupfighting.txt ${BANNERLORDDIR}/Modules/Native/tssl_groupfighting.txt
+
 # Expose the server port
 EXPOSE 7210/udp
 
@@ -78,7 +81,7 @@ CMD [ \
     "TaleWorlds.Starter.DotNetCore.Linux.dll", \
     "_MODULES_*Native*Multiplayer*_MODULES_", \
     "/dedicatedcustomserverconfigfile", \
-    "../../Modules/Native/ds_config_sample_battle.txt", \
+    "../../Modules/Native/tssl_groupfighting.txt", \
     "/tickrate", \
     "240", \
     "/dedicatedcustomserverauthtoken", \
