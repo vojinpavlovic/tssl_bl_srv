@@ -1,4 +1,0 @@
-ServerName [TSSL] Duel
-GameType Duel
-start_game
-start_mission
