@@ -15,11 +15,6 @@
 #### 4. Run Docker Image
 `docker run -d --name tssl_groupfighting -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
-#### 5. Check your container
-*The container should be called **tssl-groupfighting*** 
-
-`docker ps`
-
 ## Configuration Options
 
 *In progress*
