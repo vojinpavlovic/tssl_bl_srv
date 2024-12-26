@@ -10,10 +10,10 @@
 [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
 #### 3. Build Docker Image
-`docker build -t bannerlord-server .`
+`docker build -t blsrv .`
 
 #### 4. Run Docker Image
-`docker run -d --name bannerlord-server -p 7210:7210/udp bannerlord-server`
+`docker run -d --name tssl_groupfighting -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
 #### 5. Check your container
 *The container should be called **tssl-groupfighting*** 
