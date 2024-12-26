@@ -13,7 +13,9 @@
 `docker build -t blsrv .`
 
 #### 4. Run Docker Image
-`docker run -d --name tssl_groupfighting -p 7210:7210/tcp -p 7210:7210/udp blsrv`
+`docker run -d --name {{server_name}} -p 7210:7210/tcp -p 7210:7210/udp blsrv`
+
+**Note:** Replace `{{server_name}}` with proper name e.g `tssl_groupfighting`
 
 ## Configuration Options
 
