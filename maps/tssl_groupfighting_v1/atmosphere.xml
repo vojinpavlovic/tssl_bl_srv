@@ -48,8 +48,8 @@
 	</cloud_shadow>
 	<sun>
 		<value name="skybox_rotation" value="0.000"/>
-		<value name="sun_altitude" value="13.826"/>
-		<value name="sun_angle" value="20.000"/>
+		<value name="sun_altitude" value="100.000"/>
+		<value name="sun_angle" value="0.000"/>
 		<value name="shadow_opacity" value="1.000"/>
 		<value name="minimum_ambient" value="0.000"/>
 		<value name="sun_rotation" value="90.000"/>
