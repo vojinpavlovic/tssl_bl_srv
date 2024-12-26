@@ -73,7 +73,7 @@ RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLOR
 COPY /cfg/tssl_groupfighting.txt ${BANNERLORDDIR}/Modules/Native/tssl_groupfighting.txt
 
 # Copy the map files from the host to the container
-COPY /maps/tssl_groupfight_0001 ${BANNERLORDDIR}/Modules/Native/SceneObj/tssl_groupfight_0001
+COPY /maps/tssl_groupfight_0001 ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/tssl_groupfight_0001
 
 # Expose TCP port 7210
 EXPOSE 7210/tcp
