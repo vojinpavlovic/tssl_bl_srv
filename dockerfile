@@ -75,7 +75,10 @@ COPY /cfg/tssl_groupfighting.txt ${BANNERLORDDIR}/Modules/Native/tssl_groupfight
 # Copy the map files from the host to the container
 COPY /maps/tssl_groupfight_0001 ${BANNERLORDDIR}/Modules/Native/SceneObj/tssl_groupfight_0001
 
-# Expose the server port
+# Expose TCP port 7210
+EXPOSE 7210/tcp
+
+# Expose UDP port 7210
 EXPOSE 7210/udp
 
 # Run the server
