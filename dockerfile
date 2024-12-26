@@ -72,6 +72,9 @@ RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLOR
 # Copy the configuration file from the host to the container
 COPY /cfg/tssl_groupfighting.txt ${BANNERLORDDIR}/Modules/Native/tssl_groupfighting.txt
 
+# Copy the map files from the host to the container
+COPY /maps/tssl_groupfight_0001 ${BANNERLORDDIR}/Modules/Native/SceneObj/tssl_groupfight_0001
+
 # Expose the server port
 EXPOSE 7210/udp
 
