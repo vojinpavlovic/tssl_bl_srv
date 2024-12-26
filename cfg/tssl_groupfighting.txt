@@ -1,5 +1,6 @@
-ServerName [TSSL] Groupfighting
+ServerName [TSSL] Training Server
 GameType Battle
+Password TheSilverShieldLegion
 Map tssl_groupfighting_v1
 add_map_to_automated_battle_pool tssl_groupfighting_v1
 set_automated_battle_count -1
@@ -20,7 +21,7 @@ RoundTotal 5
 MapTimeLimit 8
 RoundTimeLimit 420
 WarmupTimeLimit 60
-AdminPassword 123
+AdminPassword PvB2OM17aui7aTTg8oyDAZ2jpB0yPoLF
 
 add_map_to_usable_maps tssl_groupfighting_v1 Battle
 
