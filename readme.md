@@ -1,4 +1,4 @@
-# TSSL Bannerlord Groupfight Battle Server
+# TSSL Bannerlord Server
 
 ## Get Started
 
