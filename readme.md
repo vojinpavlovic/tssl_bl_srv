@@ -3,7 +3,7 @@
 ## Get Started
 
 #### 1. Clone Repository
-`git clone https://github.com/vojinpavlovic/tssl_groupfighting`
+`git clone https://github.com/vojinpavlovic/tssl`
 
 #### 2. Install Docker 
 [Linux Debian](https://docs.docker.com/engine/install/debian/)
