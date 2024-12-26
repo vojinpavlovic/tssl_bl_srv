@@ -6,8 +6,8 @@
 `git clone https://github.com/vojinpavlovic/tssl`
 
 #### 2. Install Docker 
-[Linux Debian](https://docs.docker.com/engine/install/debian/)
-[Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
+- [Linux Debian](https://docs.docker.com/engine/install/debian/)
+- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
 #### 3. Build Docker Image
 `docker build -t blsrv .`
