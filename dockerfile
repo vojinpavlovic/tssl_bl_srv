@@ -70,7 +70,7 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
-COPY /cfg/tssl_training.cfg ${BANNERLORDDIR}/Modules/Native/tssl_training.txt
+COPY /cfg/tssl_training.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
 COPY /maps/tssl_groupfighting_v1 ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/tssl_groupfighting_v1
@@ -87,7 +87,7 @@ CMD [ \
     "TaleWorlds.Starter.DotNetCore.Linux.dll", \
     "_MODULES_*Native*Multiplayer*_MODULES_", \
     "/dedicatedcustomserverconfigfile", \
-    "../../Modules/Native/tssl_training.txt", \
+    "../../Modules/Native/ds_server_config.txt", \
     "/tickrate", \
     "240", \
     "/dedicatedcustomserverauthtoken", \
