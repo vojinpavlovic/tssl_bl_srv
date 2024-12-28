@@ -17,7 +17,9 @@
 
 **Note:** Replace `{{server_name}}` with proper name e.g `tssl_groupfighting`
 
-## Configuration Options
+## Github Actions
+- [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
+Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
-*In progress*
-
+- [Deploy Training Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy_training_srv.yml) `Manual Execution`
+Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
