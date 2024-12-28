@@ -1,9 +1,9 @@
-# TSSL Bannerlord Server
+# ☀ TSSL Bannerlord Server
 TSSL is a customizable Bannerlord server setup that allows you to quickly deploy a dedicated server using Docker. This guide provides instructions for setting up the server on both local and remote machines, as well as automating the build and deployment process using GitHub Actions.
 
 ---
 
-## Get Started
+## 🏃 Get Started
 
 #### 1. Clone Repository
 `git clone https://github.com/vojinpavlovic/tssl`
@@ -22,7 +22,7 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 
 ---
 
-## Remote Server Setup (Linux Debian)
+## 🌐 Remote Server Setup (Linux Debian)
 
 #### 1. Install Docker
 - Update the Package Index: 
@@ -72,7 +72,7 @@ docker ps
 
 ---
 
-## Github Actions
+## 🚀 Github Actions
 - [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
@@ -81,6 +81,6 @@ Deploys a container on the Training Server (remote server) using the latest imag
 
 ---
 
-## License
+## 🧾 License
 
 This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl/blob/main/LICENSE) file for more details.
