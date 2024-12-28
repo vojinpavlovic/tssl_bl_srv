@@ -83,6 +83,4 @@ Deploys a container on the Training Server (remote server) using the latest imag
 
 ## License
 
-This project is licensed under the [Proprietary License](https://github.com/vojinpavlovic/tssl/blob/main/LICENSE).
-
-For more details, see the LICENSE file in the repository.
+This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl/blob/main/LICENSE) file for more details.
