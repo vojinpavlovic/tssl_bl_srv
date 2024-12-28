@@ -25,17 +25,17 @@ jobs:
         echo "${{ secrets.DOCKER_PASSWORD }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
         
         echo "Pulling Docker image..."
-        sudo docker pull ${{ secrets.DOCKER_USERNAME }}/tssl:latest
+        docker pull ${{ secrets.DOCKER_USERNAME }}/tssl:latest
         
         echo "Stopping existing container (if any)..."
-        sudo docker stop tssl_training_server || true
-        sudo docker rm tssl_training_server || true
+        docker stop tssl_training_server || true
+        docker rm tssl_training_server || true
         
         echo "Starting new Docker container..."
-        sudo docker run -d --name tssl_training_server -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
+        docker run -d --name tssl_training_server -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
         
         echo "Checking running containers..."
-        sudo docker ps
+        docker ps
         
         echo "Deployment completed successfully."
         EOF
