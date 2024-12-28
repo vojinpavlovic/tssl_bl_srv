@@ -3,7 +3,7 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 
 ---
 
-## 🏃 Get Started
+## 🏠 Local Server Setup
 
 #### 1. Clone Repository
 `git clone https://github.com/vojinpavlovic/tssl`
