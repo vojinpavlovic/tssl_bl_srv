@@ -78,3 +78,11 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
 
 - [Deploy Training Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy_training_srv.yml) `Manual Execution`
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
+
+---
+
+## License
+
+This project is licensed under the [Proprietary License](https://github.com/vojinpavlovic/tssl/LICENSE).
+
+For more details, see the LICENSE file in the repository.
