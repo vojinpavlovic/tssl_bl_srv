@@ -72,6 +72,24 @@ docker ps
 
 ---
 
+## 🔐 Github Stored Secrets
+
+Secrets are stored in [Actions secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) on GitHub.
+
+In order to enable deployment workflow you need [Docker Hub](https://hub.docker.com) account.
+
+**Docker Hub**
+- DOCKER_USERNAME `Docker Username for docker repository access`
+- DOCKER_PASSWORD `Docker Password for docker repository access`
+
+**Secrets for Deployment (SSH)**
+- BL_SRV_TOKEN: `Generated TW token from Console Commands`
+- REMOTE_SERVER_IP: `IPv4`
+- REMOTE_SERVER_USER `Linux User`
+- REMOTE_SSH_KEY `SSH key for Remote Access`
+
+---
+
 ## 🚀 Github Actions
 - [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub

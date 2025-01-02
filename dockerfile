@@ -5,6 +5,7 @@ FROM debian:bullseye-slim
 ENV STEAMCMDDIR=/steamcmd
 ENV BANNERLORDDIR=/tssl
 ENV PATH="$PATH:/usr/share/dotnet"
+ENV BL_SRV_TOKEN="FkHLd0ru7ehKWdKgdJmXR5oZ3XV483IaQnVX/Zv5uXrAWRIJmqTlUWprxuKXBCqZJKQ387Jdbo8xDLPr9FBhPWo1BCC7HIzmHeumVaHArlZl6JMjzRKGJXMZFjoN/Hr5z8DSMau2NO2VmYM3UGEv9eRjZ+wiyrpbQJd54wRYWc3qsE5zYmlvXxuts9GgJ69pJ/OEhcM/29ZTW1rftk1JbkQTCyexlf2MDZGoOPnNnyn35lux5TZPMfv0TpBlZXz0AczH616vf50NwSGG+L5Baw=="
 
 # Install Linux dependencies and add Microsoft repository
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -70,10 +71,10 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
-COPY /cfg/tssl_training.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
+COPY /cfg/server.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
-COPY /maps/tssl_groupfighting_v1 ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/tssl_groupfighting_v1
+COPY assets/maps/tssl_groupfighting_v1 ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/tssl_groupfighting_v1
 
 # Expose TCP port 7210
 EXPOSE 7210/tcp
@@ -91,7 +92,7 @@ CMD [ \
     "/tickrate", \
     "240", \
     "/dedicatedcustomserverauthtoken", \
-    "FkHLd0ru7ehKWdKgdJmXR5oZ3XV483IaQnVX/Zv5uXrAWRIJmqTlUWprxuKXBCqZJKQ387Jdbo8xDLPr9FBhPWo1BCC7HIzmHeumVaHArlZl6JMjzRKGJXMZFjoN/Hr5z8DSMau2NO2VmYM3UGEv9eRjZ+wiyrpbQJd54wRYWc3qsE5zYmlvXxuts9GgJ69pJ/OEhcM/29ZTW1rftk1JbkQTCyexlf2MDZGoOPnNnyn35lux5TZPMfv0TpBlZXz0AczH616vf50NwSGG+L5Baw==", \
+    ${BL_SRV_TOKEN}, \
     "/dedicatedcustomserver", \
     "7210", \
     "USER", \
