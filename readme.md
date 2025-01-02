@@ -18,7 +18,7 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 #### 4. Run Docker Image
 `docker run -d --name {{server_name}} -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
-**Note:** Replace `{{server_name}}` with proper name e.g `tssl_groupfighting`
+**Note:** Replace `{{server_name}}` with proper name e.g `tssl_sample_srv`
 
 ---
 
