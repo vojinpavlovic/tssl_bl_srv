@@ -18,7 +18,7 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 #### 4. Run Docker Image
 `docker run -d --name {{server_name}} -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
-**Note:** Replace `{{server_name}}` with proper name e.g `tssl_groupfighting`
+**Note:** Replace `{{server_name}}` with proper name e.g `tssl_sample_srv`
 
 ---
 
@@ -69,6 +69,26 @@ sudo usermod -aG docker $USER
 ```
 docker ps
 ```
+
+---
+
+## 🔐 Github Stored Secrets
+
+Secrets are stored in [Actions secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) on GitHub.
+
+In order to enable deployment workflow you need [Docker Hub](https://hub.docker.com) account.
+
+**Docker Hub**
+- DOCKER_USERNAME `Docker Username for docker repository access`
+- DOCKER_PASSWORD `Docker Password for docker repository access`
+
+**Secrets for Deployment (SSH)**
+- BL_SRV_TOKEN: `Generated TW token from Console Commands`
+- DOCKER_IMAGE: `The repository where build image is stored`
+- DOCKER_IMAGE_VERSION: `The version within DOCKER_IMAGE repository`
+- REMOTE_SERVER_IP: `IPv4`
+- REMOTE_SERVER_USER `Linux User`
+- REMOTE_SSH_KEY `SSH key for Remote Access`
 
 ---
 

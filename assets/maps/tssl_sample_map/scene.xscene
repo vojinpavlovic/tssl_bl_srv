@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<scene name="tssl_groupfighting_v1" version="2" unique_token="{E5BFE586-9112-46D4-AABA-E8BDAD81A9AB}" revision="1735214076826" id_automatic="true">
+<scene name="tssl_sample_map" version="2" unique_token="{E5BFE586-9112-46D4-AABA-E8BDAD81A9AB}" revision="1735214076826" id_automatic="true">
 	<flora_bounding_rect min="0.000, 0.000" max="200.000, 200.000"/>
 	<levels>
 		<level name="base" mask="1"/>

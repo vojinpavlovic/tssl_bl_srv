@@ -11,13 +11,13 @@ jobs:
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_TRAINING_SERVER_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.REMOTE_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SERVER_TRAINING_SERVER_IP }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ secrets.REMOTE_SERVER_IP }} >> ~/.ssh/known_hosts
 
     - name: Deploy on Remote Server
       run: |
-        ssh -T -i ~/.ssh/id_rsa ${{ secrets.SERVER_TRAINING_SERVER_USER }}@${{ secrets.SERVER_TRAINING_SERVER_IP }} << 'EOF'
+        ssh -T -i ~/.ssh/id_rsa ${{ secrets.REMOTE_SERVER_USER }}@${{ secrets.REMOTE_SERVER_IP }} << 'EOF'
         # Disable 'set -e' for more control
         set +e
 
@@ -28,11 +28,11 @@ jobs:
         docker pull ${{ secrets.DOCKER_USERNAME }}/tssl:latest
         
         echo "Stopping existing container (if any)..."
-        docker stop tssl_training_server || true
-        docker rm tssl_training_server || true
+        docker stop tssl_sample_srv || true
+        docker rm tssl_sample_srv || true
         
         echo "Starting new Docker container..."
-        docker run -d --name tssl_training_server -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
+        docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
         
         echo "Checking running containers..."
         docker ps
