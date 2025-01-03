@@ -24,7 +24,7 @@ Installation Links:
 
 ## 🌐 Remote Server Setup (Linux Debian)
 
-##### Install Docker
+##### 1. Install Docker
  Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
 
 Installation Links:
