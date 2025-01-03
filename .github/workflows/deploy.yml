@@ -3,27 +3,11 @@ name: Deploy to Remote Server
 on:
   workflow_dispatch:
     inputs:
-      container-name:
-        description: "Container name on Remote Server (DEFAULT tssl_sample_srv)"
+      instance-id:
+        description: "Remote Server Instance Id"
         required: true
-        default: "tssl_sample_srv"
-      remote_port:
-        description: "Remote Server Port (DEFAULT 7210)"
-        required: true
-        default: "7210"
-      bl_srv_token:
-        description: "Taleworld Token from Console Command (DEFAULT BL_SRV_TOKEN from secrets)"
-        required: false
-      server-config-file:
-        description: "Server configuration file to use (DEFAULT server.cfg)"
-        required: false
-        default: "server.cfg"
-      docker_image:
-        description: "Docker image to deploy (DEFAULT tssl)"
-        required: true
-        default: "tssl"
-      docker_image_version:
-        description: "Docker image version to deploy (DEFAULT latest)"
+      docker-image-version:
+        description: "Docker Image Version"
         required: true
         default: "latest"
 
@@ -32,49 +16,75 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.REMOTE_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.REMOTE_SERVER_IP }} >> ~/.ssh/known_hosts
+      # Step 1: Extract secrets from JSON
+      - name: Extract secrets from JSON
+        run: |
+          # Fetch the JSON secret and parse it with jq
+          deployment_config="${{ secrets.SERVER_DEPLOYMENT_CONFIG }}"
+          instance_id="${{ github.event.inputs.instance-id }}"
+          
+          # Extract the specific instance secrets from the JSON object
+          REMOTE_SSH_KEY=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SSH_KEY")
+          REMOTE_SERVER_IP=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SERVER_IP")
+          REMOTE_SERVER_USER=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SERVER_USER")
 
-    - name: Deploy on Remote Server
-      run: |
-        ssh -T -i ~/.ssh/id_rsa ${{ secrets.REMOTE_SERVER_USER }}@${{ secrets.REMOTE_SERVER_IP }} << EOF
-        # Disable 'set -e' for more control
-        set +e
+          # Set these as GitHub environment variables
+          echo "REMOTE_SSH_KEY=$REMOTE_SSH_KEY" >> $GITHUB_ENV
+          echo "REMOTE_SERVER_IP=$REMOTE_SERVER_IP" >> $GITHUB_ENV
+          echo "REMOTE_SERVER_USER=$REMOTE_SERVER_USER" >> $GITHUB_ENV
 
-        echo "Determine BL_SRV_TOKEN"
-        if [ -z "${{ github.event.inputs.bl_srv_token }}" ]; then
-          echo "Secret BL_SRV_TOKEN found and pulled for deployment"
-          export BL_SRV_TOKEN=${{ secrets.BL_SRV_TOKEN }}
-        else
-          echo "Input BL_SRV_TOKEN found and taken for deploymentt"
-          export BL_SRV_TOKEN=${{ github.event.inputs.bl_srv_token }}
-        fi
+      # Step 2: Set up SSH
+      - name: Set up SSH
+        run: |
+          # Ensure the ~/.ssh directory exists
+          mkdir -p ~/.ssh
+          
+          # Place the SSH private key into the id_rsa file
+          echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
+          
+          # Set proper permissions on the private key
+          chmod 600 ~/.ssh/id_rsa
+          
+          # Scan the remote server's SSH key and add it to known_hosts
+          ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
 
-        echo "Logging into Docker..."
-        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-        
-        echo "Pulling Docker image..."
-        docker pull ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
-        
-        echo "Stopping existing container (if any)..."
-        docker stop ${{ github.event.inputs.container-name }} || true
-        docker rm ${{ github.event.inputs.container-name }} || true
-        
-        echo "Starting new Docker container..."
-        docker run -d \ 
-          --name ${{ github.event.inputs.container-name }} \
-          -p ${{ github.event.inputs.remote_port }}:7210/tcp \ 
-          -p ${{ github.event.inputs.remote_port }}:7210/udp \
-          -e BL_SRV_TOKEN=$BL_SRV_TOKEN \
-          -e BL_SRV_CONFIG=${{ github.event.inputs.server-config-file }} \
-          ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
-        
-        echo "Checking running containers..."
-        docker ps
-        
-        echo "Deployment completed successfully."
-        EOF
+          echo "SSH setup completed for $REMOTE_SERVER_USER@$REMOTE_SERVER_IP"
+
+# Step 3: Deploy on Remote Server
+      - name: Deploy on Remote Server
+        run: |
+          # Ensure SSH key is available
+          mkdir -p ~/.ssh
+          echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
+
+          # SSH into the remote server to deploy
+          ssh -T -i ~/.ssh/id_rsa "$REMOTE_SERVER_USER"@"$REMOTE_SERVER_IP" << EOF
+          # Disable 'set -e' for more control
+          set +e
+
+          echo "Logging into Docker..."
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+          echo "Pulling Docker image..."
+          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker }}"
+
+          echo "Stopping existing container (if any)..."
+          docker stop "${{ github.event.inputs.container-name }}" || true
+          docker rm "${{ github.event.inputs.container-name }}" || true
+
+          echo "Starting new Docker container..."
+          docker run -d \
+            --name "${{ github.event.inputs.container-name }}" \
+            -p "$REMOTE_PORT:7210/tcp" \
+            -p "$REMOTE_PORT:7210/udp" \
+            -e BL_SRV_TOKEN=$BL_SRV_TOKEN \
+            -e BL_SRV_CONFIG=$SERVER_CFG_FILE \
+            "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker-image-version }}"
+
+          echo "Checking running containers..."
+          docker ps
+
+          echo "Deployment completed successfully."
+          EOF

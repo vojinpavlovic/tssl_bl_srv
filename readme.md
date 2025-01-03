@@ -80,14 +80,14 @@ Deploys a container on the Training Server (remote server) using the latest imag
 
 #### Arguments
 
+**Instance Id**
+- Type: `string`
+- Required: `true`
+
 **Docker Image Version**
 - Type: `string`
 - Required: `true`
 - Default Value: `latest`
-
-**Instance Id**
-- Type: `string`
-- Required: `true`
 
 ---
 
