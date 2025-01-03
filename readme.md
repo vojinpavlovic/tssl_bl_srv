@@ -31,7 +31,7 @@ Installation Links:
 - [Linux Debian](https://docs.docker.com/engine/install/debian/)
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
-#### 3. Run Docker Image
+#### 2. Run Docker Image
 `docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
 **Note:** Replace `tssl_sample_srv` with desired container name
