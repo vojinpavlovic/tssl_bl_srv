@@ -28,11 +28,11 @@ jobs:
         docker pull ${{ secrets.DOCKER_USERNAME }}/tssl:latest
         
         echo "Stopping existing container (if any)..."
-        docker stop tssl_training_server || true
-        docker rm tssl_training_server || true
+        docker stop tssl_sample_srv || true
+        docker rm tssl_sample_srv || true
         
         echo "Starting new Docker container..."
-        docker run -d --name tssl_training_server -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
+        docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
         
         echo "Checking running containers..."
         docker ps

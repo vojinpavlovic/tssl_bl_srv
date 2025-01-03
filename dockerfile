@@ -1,11 +1,14 @@
 # Use Debian slim as the base image
 FROM debian:bullseye-slim
 
+# Arguments
+ARG BL_SRV_TOKEN
+
 # Set environment variables
 ENV STEAMCMDDIR=/steamcmd
 ENV BANNERLORDDIR=/tssl
 ENV PATH="$PATH:/usr/share/dotnet"
-ENV BL_SRV_TOKEN="FkHLd0ru7ehKWdKgdJmXR5oZ3XV483IaQnVX/Zv5uXrAWRIJmqTlUWprxuKXBCqZJKQ387Jdbo8xDLPr9FBhPWo1BCC7HIzmHeumVaHArlZl6JMjzRKGJXMZFjoN/Hr5z8DSMau2NO2VmYM3UGEv9eRjZ+wiyrpbQJd54wRYWc3qsE5zYmlvXxuts9GgJ69pJ/OEhcM/29ZTW1rftk1JbkQTCyexlf2MDZGoOPnNnyn35lux5TZPMfv0TpBlZXz0AczH616vf50NwSGG+L5Baw=="
+ENV BL_SRV_TOKEN=${BL_SRV_TOKEN}}
 
 # Install Linux dependencies and add Microsoft repository
 RUN apt-get update && apt-get install -y --no-install-recommends \
