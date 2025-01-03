@@ -64,9 +64,9 @@ Content of secret is **JSON** format. Please use [minifier](https://www.minifier
 [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
-#### ✍🏻 Arguments
+#### 🪶 Arguments
 
-**Docker Image Version**
+✍️ **Docker Image Version**
 - 🏷️ Type: `string`
 - ✔️ Required: `true`
 - ✏️ Default Value: `latest`
@@ -74,13 +74,13 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
 [Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
 
-#### ✍🏻 Arguments
+#### 🪶 Arguments
 
-**Instance Id**
+✍️ **Instance Id**
 - 🏷️ Type: `string`
 - ✔️ Required: `true`
 
-**Docker Image Version**
+✍️ **Docker Image Version**
 - 🏷️ Type: `string`
 - ✔️ Required: `true`
 - ✏️ Default Value: `latest`
