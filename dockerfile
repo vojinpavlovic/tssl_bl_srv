@@ -85,7 +85,7 @@ EXPOSE 7210/udp
 CMD [ \
     "dotnet", \
     "TaleWorlds.Starter.DotNetCore.Linux.dll", \
-    "_MODULES_*Native*Multiplayer*_MODULES_", \
+    "_MODULES_*Native*Multiplayer*_MODULES_*TEST_MODULE", \
     "/dedicatedcustomserverconfigfile", \
     "../../Modules/Native/ds_server_config.txt", \
     "/tickrate", \
