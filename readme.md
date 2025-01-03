@@ -50,14 +50,14 @@ Secrets are stored in [Actions secrets and variables](https://docs.github.com/en
 In order to enable deployment workflow you need [Docker Hub](https://hub.docker.com) account.
 
 **Docker Hub**
-- DOCKER_USERNAME `Docker Username for docker repository access`
-- DOCKER_PASSWORD `Docker Password for docker repository access`
+- DOCKER_USERNAME `Docker Username from Docker Hub account.`
+- DOCKER_PASSWORD `Docker Password from Docker Hub account.`
 
 **Secrets for Deployment (SSH)**
-- BL_SRV_TOKEN: `Generated TW token from Console Commands`
+- BL_SRV_TOKEN: `TaleWorld token`
 - REMOTE_SERVER_IP: `IPv4`
-- REMOTE_SERVER_USER `Linux User`
-- REMOTE_SSH_KEY `SSH key for Remote Access`
+- REMOTE_SERVER_USER `Remote Server User`
+- REMOTE_SSH_KEY `Remote Server SSH Access Key`
 
 ---
 
