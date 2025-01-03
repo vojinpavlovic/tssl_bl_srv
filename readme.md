@@ -67,10 +67,10 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
 #### 🪶 Arguments
 
 1. ✍️ **Docker Image Version**
-    - 🏷️ Type: `string`
-    - ✔️ Required: `true`
-    - ✏️ Default Value: `latest`
-    - 📙 Description: Uploading new build to the Docker Image Version e.g `stable` (production ready) version instead of `latest` (experimental)
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` latest
+    - 📙 `Description:` Uploading new build to the Docker Image Version e.g `stable` (production ready) version instead of `latest` (experimental)
 
 
 ### [Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
@@ -79,15 +79,15 @@ Deploys a container on the Training Server (remote server) using the latest imag
 #### 🪶 Arguments
 
 1. ✍️ **Instance Id**
-    - 🏷️ Type: `string`
-    - ✔️ Required: `true`
-    - 📙 Description: Must be valid instance identifier within **DEPLOYMENT_CONFIG** content
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - 📙 `Description:` Must be valid instance identifier within **DEPLOYMENT_CONFIG** content
 
 2. ✍️ **Docker Image Version**
-    - 🏷️ Type: `string`
-    - ✔️ Required: `true`
-    - ✏️ Default Value: `latest`
-    - 📙 Description: Version you previously build e.g `stable` (production ready) version instead of `latest` (experimental)
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` latest
+    - 📙 `Description:` Version you previously build e.g `stable` (production ready) version instead of `latest` (experimental)
 
 ---
 
