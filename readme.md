@@ -5,70 +5,41 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 
 ## 🏠 Local Server Setup
 
-#### 1. Clone Repository
-`git clone https://github.com/vojinpavlovic/tssl`
+##### 1. Install Docker
+ Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
 
-#### 2. Install Docker 
+Installation Links:
 - [Linux Debian](https://docs.docker.com/engine/install/debian/)
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
-#### 3. Build Docker Image
+#### 2. Build Docker Image
 `docker build -t blsrv .`
 
-#### 4. Run Docker Image
-`docker run -d --name {{server_name}} -p 7210:7210/tcp -p 7210:7210/udp blsrv`
+#### 3. Run Docker Image
+`docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
-**Note:** Replace `{{server_name}}` with proper name e.g `tssl_sample_srv`
+**Note:** Replace `tssl_sample_srv` with desired container name
 
 ---
 
 ## 🌐 Remote Server Setup (Linux Debian)
 
-#### 1. Install Docker
-- Update the Package Index: 
-``` 
-sudo apt-get update 
-```
+##### Install Docker
+ Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
 
-- Install Required Dependencies:
-``` 
-sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
-```
+Installation Links:
+- [Linux Debian](https://docs.docker.com/engine/install/debian/)
+- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
-- Add Docker’s Official GPG Key:
-```
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-```
+#### 3. Run Docker Image
+`docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
-- Set up the Stable Docker Repository:
-```
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
+**Note:** Replace `tssl_sample_srv` with desired container name
 
-- Update the Package Index Again:
-```
-sudo apt-get update
-```
+We recommend to use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https://hub.docker.com) these images can be deployed to a remote server. 
 
-- Install Docker Engine:
-```
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
-
-- Verify Installation
-```
-sudo docker --version
-```
-
-- Add user to Docker Group
-```
-sudo usermod -aG docker $USER
-```
-
-- Verify Docker without Sudo
-```
-docker ps
-```
+In order to enable workflow, it is required to setup secrets. To find more informations visit 
+`🔐 Github Stored Secrets` section.
 
 ---
 
