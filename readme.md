@@ -3,7 +3,7 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 
 ---
 
-## Get Started
+## 🚀 Get Started
 
 ##### 1. Install Docker
  Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
