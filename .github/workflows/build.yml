@@ -2,7 +2,15 @@ name: Build
 
 on:
   workflow_dispatch:
-
+    inputs:
+      docker_image:
+        description: "Docker image name (DEFAULT tssl_bl_srv)"
+        required: true
+        default: "tssl_bl_srv"
+      docker_image_version:
+        description: "Docker image version (DEFAULT latest)"
+        required: true
+        default: "latest"
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -20,11 +28,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-        - name: Build and Push Docker Image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:${{ secrets.DOCKER_IMAGE_VERSION }}
-          build-args: |
-            BL_SRV_TOKEN=${{ secrets.BL_SRV_TOKEN }}
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
+        build-args: |
+          BL_SRV_TOKEN=${{ secrets.BL_SRV_TOKEN }}

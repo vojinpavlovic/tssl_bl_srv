@@ -84,8 +84,6 @@ In order to enable deployment workflow you need [Docker Hub](https://hub.docker.
 
 **Secrets for Deployment (SSH)**
 - BL_SRV_TOKEN: `Generated TW token from Console Commands`
-- DOCKER_IMAGE: `The repository where build image is stored`
-- DOCKER_IMAGE_VERSION: `The version within DOCKER_IMAGE repository`
 - REMOTE_SERVER_IP: `IPv4`
 - REMOTE_SERVER_USER `Linux User`
 - REMOTE_SSH_KEY `SSH key for Remote Access`

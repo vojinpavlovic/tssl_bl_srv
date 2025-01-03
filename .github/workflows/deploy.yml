@@ -2,6 +2,15 @@ name: Deploy Training Server
 
 on:
   workflow_dispatch:
+    inputs:
+      docker_image:
+        description: "Docker image to deploy (DEFAULT tssl_bl_srv)"
+        required: true
+        default: "tssl_bl_srv"
+      docker_image_version:
+        description: "Docker image version to deploy (DEFAULT latest)"
+        required: true
+        default: "latest"
 
 jobs:
   pull-and-deploy:
@@ -17,7 +26,7 @@ jobs:
 
     - name: Deploy on Remote Server
       run: |
-        ssh -T -i ~/.ssh/id_rsa ${{ secrets.REMOTE_SERVER_USER }}@${{ secrets.REMOTE_SERVER_IP }} << 'EOF'
+        ssh -T -i ~/.ssh/id_rsa ${{ secrets.REMOTE_SERVER_USER }}@${{ secrets.REMOTE_SERVER_IP }} << EOF
         # Disable 'set -e' for more control
         set +e
 
@@ -25,14 +34,14 @@ jobs:
         echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
         
         echo "Pulling Docker image..."
-        docker pull ${{ secrets.DOCKER_USERNAME }}/tssl:latest
+        docker pull ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
         
         echo "Stopping existing container (if any)..."
         docker stop tssl_sample_srv || true
         docker rm tssl_sample_srv || true
         
         echo "Starting new Docker container..."
-        docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/tssl:latest
+        docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
         
         echo "Checking running containers..."
         docker ps
