@@ -3,10 +3,6 @@ name: Build Image to Docker Hub
 on:
   workflow_dispatch:
     inputs:
-      docker_image:
-        description: "Docker image name (DEFAULT tssl_bl_srv)"
-        required: true
-        default: "tssl_bl_srv"
       docker_image_version:
         description: "Docker image version (DEFAULT latest)"
         required: true
@@ -34,4 +30,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker_image_version }}

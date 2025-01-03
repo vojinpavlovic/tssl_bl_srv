@@ -52,21 +52,42 @@ In order to enable deployment workflow you need [Docker Hub](https://hub.docker.
 **Docker Hub**
 - DOCKER_USERNAME `Account Username from Docker Hub.`
 - DOCKER_PASSWORD `Account Password from Docker Hub.`
+- DOCKER_REPOSITORY `Repository from Docker Hub for Bannerlord Server`
 
 **Secrets for Deployment (SSH)**
-- BL_SRV_TOKEN: `TaleWorld token.`
-- REMOTE_SERVER_IP: `IPv4`
-- REMOTE_SERVER_USER `Remote Server User.`
-- REMOTE_SSH_KEY `Remote Server SSH Access Key.`
+- BL_SRV_TOKEN_**{INSTANCE_ID}**: `TaleWorld token.`
+- REMOTE_SERVER_IP_**{INSTANCE_ID}**: `IPv4`, 
+- REMOTE_SERVER_USER_**{INSTANCE_ID}** `Remote Server User.`
+- REMOTE_SSH_KEY_**{INSTANCE_ID}}** `Remote Server SSH Access Key.`
+
+Valid **INSTANCE_ID** is required in deployment workflow for pulling secrets for individual instance.
 
 ---
 
-## 🚀 Github Actions
+## 🚀 Worfklows
 - [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
+#### Arguments
+
+**Docker Image Version**
+- Type: `string`
+- Required: `true`
+- Default Value: `latest`
+
 - [Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
+
+#### Arguments
+
+**Docker Image Version**
+- Type: `string`
+- Required: `true`
+- Default Value: `latest`
+
+**Instance Id**
+- Type: `string`
+- Required: `true`
 
 ---
 
