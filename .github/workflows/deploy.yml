@@ -12,8 +12,12 @@ on:
         required: true
         default: "7210"
       bl_srv_token:
-        description: "Taleworld Token from Console Command"
+        description: "Taleworld Token from Console Command (DEFAULT BL_SRV_TOKEN from secrets)"
         required: false
+      server-config-file:
+        description: "Server configuration file to use (DEFAULT server.cfg)"
+        required: false
+        default: "server.cfg"
       docker_image:
         description: "Docker image to deploy (DEFAULT tssl)"
         required: true
@@ -43,10 +47,10 @@ jobs:
 
         echo "Determine BL_SRV_TOKEN"
         if [ -z "${{ github.event.inputs.bl_srv_token }}" ]; then
-          echo "Input BL_SRV_TOKEN found and taken for deployment"
+          echo "Secret BL_SRV_TOKEN found and pulled for deployment"
           export BL_SRV_TOKEN=${{ secrets.BL_SRV_TOKEN }}
         else
-          echo "Secret BL_SRV_TOKEN found and pulled for deployment"
+          echo "Input BL_SRV_TOKEN found and taken for deploymentt"
           export BL_SRV_TOKEN=${{ github.event.inputs.bl_srv_token }}
         fi
 
@@ -66,6 +70,7 @@ jobs:
           -p ${{ github.event.inputs.remote_port }}:7210/tcp \ 
           -p ${{ github.event.inputs.remote_port }}:7210/udp \
           -e BL_SRV_TOKEN=$BL_SRV_TOKEN \
+          -e BL_SRV_CONFIG=${{ github.event.inputs.server-config-file }} \
           ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
         
         echo "Checking running containers..."

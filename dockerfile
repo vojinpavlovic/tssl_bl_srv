@@ -70,7 +70,7 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
-COPY /cfg/server.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
+COPY /cfg/${BL_SRV_CONFIG} ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
 COPY assets/maps/ ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/
@@ -85,7 +85,7 @@ EXPOSE 7210/udp
 CMD [ \
     "dotnet", \
     "TaleWorlds.Starter.DotNetCore.Linux.dll", \
-    "_MODULES_*Native*Multiplayer*_MODULES_*TEST_MODULE", \
+    "_MODULES_*Native*Multiplayer*_MODULES_", \
     "/dedicatedcustomserverconfigfile", \
     "../../Modules/Native/ds_server_config.txt", \
     "/tickrate", \
