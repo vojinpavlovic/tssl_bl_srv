@@ -1,8 +1,16 @@
-name: Deploy Training Server
+name: Deploy to Remote Server
 
 on:
   workflow_dispatch:
     inputs:
+      container-name:
+        description: "Container name on Remote Server (DEFAULT tssl_sample_srv)"
+        required: true
+        default: "tssl_sample_srv"
+      remote_port:
+        description: "Remote Server Port (DEFAULT 7210)"
+        required: true
+        default: "7210"
       docker_image:
         description: "Docker image to deploy (DEFAULT tssl_bl_srv)"
         required: true
@@ -37,11 +45,11 @@ jobs:
         docker pull ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
         
         echo "Stopping existing container (if any)..."
-        docker stop tssl_sample_srv || true
-        docker rm tssl_sample_srv || true
+        docker stop ${{ github.event.inputs.container-name }} || true
+        docker rm ${{ github.event.inputs.container-name }} || true
         
         echo "Starting new Docker container..."
-        docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
+        docker run -d --name ${{ github.event.inputs.container-name }} -p ${{ github.event.inputs.remote_port }}:7210/tcp -p ${{ github.event.inputs.remote_port }}:7210/udp ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
         
         echo "Checking running containers..."
         docker ps
