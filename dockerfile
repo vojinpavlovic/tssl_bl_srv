@@ -1,14 +1,10 @@
 # Use Debian slim as the base image
 FROM debian:bullseye-slim
 
-# Arguments
-ARG BL_SRV_TOKEN
-
 # Set environment variables
 ENV STEAMCMDDIR=/steamcmd
 ENV BANNERLORDDIR=/tssl
 ENV PATH="$PATH:/usr/share/dotnet"
-ENV BL_SRV_TOKEN=${BL_SRV_TOKEN}}
 
 # Install Linux dependencies and add Microsoft repository
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -95,7 +91,7 @@ CMD [ \
     "/tickrate", \
     "240", \
     "/dedicatedcustomserverauthtoken", \
-    ${BL_SRV_TOKEN}, \
+    $BL_SRV_TOKEN, \
     "/dedicatedcustomserver", \
     "7210", \
     "USER", \

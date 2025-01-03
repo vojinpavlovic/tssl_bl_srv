@@ -19,6 +19,9 @@ on:
         description: "Docker image version to deploy (DEFAULT latest)"
         required: true
         default: "latest"
+      bl_srv_token:
+        description: "Taleworld Token from Console Command"
+        required: true
 
 jobs:
   pull-and-deploy:
@@ -49,7 +52,12 @@ jobs:
         docker rm ${{ github.event.inputs.container-name }} || true
         
         echo "Starting new Docker container..."
-        docker run -d --name ${{ github.event.inputs.container-name }} -p ${{ github.event.inputs.remote_port }}:7210/tcp -p ${{ github.event.inputs.remote_port }}:7210/udp ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
+        docker run -d \ 
+          --name ${{ github.event.inputs.container-name }} \
+          -p ${{ github.event.inputs.remote_port }}:7210/tcp \ 
+          -p ${{ github.event.inputs.remote_port }}:7210/udp \
+          -e BL_SRV_TOKEN=${{ github.event.inputs.bl_srv_token }} \
+          ${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker_image_version }}
         
         echo "Checking running containers..."
         docker ps
