@@ -33,17 +33,14 @@ In order to enable workflow, it is required to setup secrets. To find more infor
 
 Secrets are stored in [Actions secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) on GitHub.
 
-In order to enable deployment workflow you need [Docker Hub](https://hub.docker.com) account.
 
-**Secrets Docker Hub**
+#### 🐳 Secrets for Docker Hub Account 
 - DOCKER_USERNAME `Account Username from Docker Hub.`
 - DOCKER_PASSWORD `Account Password from Docker Hub.`
 - DOCKER_REPOSITORY `Repository from Docker Hub for Bannerlord Server`
 
-**Secrets for Deployment (SSH)**
+#### 🌐 Secrets for Deployment on Remote Server
 Your Secret Repository name should be called **DEPLOYMENT_CONFIG**
-
-**Note:** Instance Identifier must be **unique** accross all secrets. 
 
 Content of secret is **JSON** format. Please use [minifier](https://www.minifier.org) to minify your JSON before uploading/updating secret in `Github Stored Secrets`
 
@@ -59,35 +56,39 @@ Content of secret is **JSON** format. Please use [minifier](https://www.minifier
 }
 ```
 
+**Note:** Instance Identifier must be **unique** accross all secrets. 
+
 ---
 
 ## 🚀 Worfklows
 [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
-#### Arguments
+#### ✍🏻 Arguments
 
 **Docker Image Version**
-- Type: `string`
-- Required: `true`
-- Default Value: `latest`
+- 🏷️ Type: `string`
+- ✔️ Required: `true`
+- ✏️ Default Value: `latest`
 
 [Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
 
-#### Arguments
+#### ✍🏻 Arguments
 
 **Instance Id**
-- Type: `string`
-- Required: `true`
+- 🏷️ Type: `string`
+- ✔️ Required: `true`
 
 **Docker Image Version**
-- Type: `string`
-- Required: `true`
-- Default Value: `latest`
+- 🏷️ Type: `string`
+- ✔️ Required: `true`
+- ✏️ Default Value: `latest`
 
 ---
 
 ## 🧾 License
 
-This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl/blob/main/LICENSE) file for more details.
+This project is licensed under the **MIT** License. 
+
+See the [LICENSE](https://github.com/vojinpavlovic/tssl/blob/main/LICENSE) file for more details.
