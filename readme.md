@@ -41,19 +41,21 @@ In order to enable deployment workflow you need [Docker Hub](https://hub.docker.
 - DOCKER_REPOSITORY `Repository from Docker Hub for Bannerlord Server`
 
 **Secrets for Deployment (SSH)**
-Your Secret Repository name should be 
-- DEPLOYMENT_CONFIG_{INSTANCE_ID}
-Note: Instance Identifier must be unique accross all secrets. 
+Your Secret Repository name should be called **DEPLOYMENT_CONFIG**
 
-Content of secret is JSON format. Please use [minifier](https://www.minifier.org) to minify your JSON before uploading/updating secret in `Github Stored Secrets`
+**Note:** Instance Identifier must be **unique** accross all secrets. 
+
+Content of secret is **JSON** format. Please use [minifier](https://www.minifier.org) to minify your JSON before uploading/updating secret in `Github Stored Secrets`
 
 ```json
 {
-    "token": "Taleworld Server Token",
-    "remote_ip": "Remote Server IPv4 Address",
-    "remote_user": "Remote Server User with docker permissions",
-    "remoter_ssh_key": "Remote Server SSH access key",
-    "remote_port": "Instance Bannerlord Server Port",
+    "unique_instance_id": {
+        "token": "Taleworld Server Token",
+        "remote_ip": "Remote Server IPv4 Address",
+        "remote_user": "Remote Server User with docker permissions",
+        "remoter_ssh_key": "Remote Server SSH access key",
+        "remote_port": "Instance Bannerlord Server Port",
+    }
 }
 ```
 

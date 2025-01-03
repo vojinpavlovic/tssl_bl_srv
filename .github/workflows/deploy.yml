@@ -20,9 +20,9 @@ jobs:
       - name: Extract secrets from JSON
         run: |
           # Fetch the JSON secret and parse it with jq
-          deployment_config="${{ secrets.SERVER_DEPLOYMENT_CONFIG }}"
+          deployment_config="${{ secrets.DEPLOYMENT_CONFIG }}"
           instance_id="${{ github.event.inputs.instance-id }}"
-          
+
           # Extract the specific instance secrets from the JSON object
           REMOTE_SSH_KEY=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SSH_KEY")
           REMOTE_SERVER_IP=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SERVER_IP")
@@ -68,7 +68,7 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
           echo "Pulling Docker image..."
-          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker }}"
+          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker-image-version }}"
 
           echo "Stopping existing container (if any)..."
           docker stop "${{ github.event.inputs.container-name }}" || true
