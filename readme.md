@@ -3,7 +3,7 @@ TSSL is a customizable Bannerlord server setup that allows you to quickly deploy
 
 ---
 
-## 🏠 Local Server Setup
+## Get Started
 
 ##### 1. Install Docker
  Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
@@ -18,23 +18,9 @@ Installation Links:
 #### 3. Run Docker Image
 `docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp blsrv`
 
-**Note:** Replace `tssl_sample_srv` with desired container name
+Replace `tssl_sample_srv` with desired container name
 
----
-
-## 🌐 Remote Server Setup (Linux Debian)
-
-##### 1. Install Docker
- Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
-
-Installation Links:
-- [Linux Debian](https://docs.docker.com/engine/install/debian/)
-- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
-
-#### 2. Run Docker Image
-`docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp blsrv`
-
-**Note:** Replace `tssl_sample_srv` with desired container name
+#### Note: 
 
 We recommend to use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https://hub.docker.com) these images can be deployed to a remote server. 
 
@@ -55,12 +41,21 @@ In order to enable deployment workflow you need [Docker Hub](https://hub.docker.
 - DOCKER_REPOSITORY `Repository from Docker Hub for Bannerlord Server`
 
 **Secrets for Deployment (SSH)**
-- BL_SRV_TOKEN_**{INSTANCE_ID}**: `TaleWorld token.`
-- REMOTE_SERVER_IP_**{INSTANCE_ID}**: `IPv4`, 
-- REMOTE_SERVER_USER_**{INSTANCE_ID}** `Remote Server User.`
-- REMOTE_SSH_KEY_**{INSTANCE_ID}}** `Remote Server SSH Access Key.`
+Your Secret Repository name should be 
+- DEPLOYMENT_CONFIG_{INSTANCE_ID}
+Note: Instance Identifier must be unique accross all secrets. 
 
-Valid **INSTANCE_ID** is required in deployment workflow for pulling secrets for individual instance.
+Content of secret is JSON format. Please use [minifier](https://www.minifier.org) to minify your JSON before uploading/updating secret in `Github Stored Secrets`
+
+```json
+{
+    "token": "Taleworld Server Token",
+    "remote_ip": "Remote Server IPv4 Address",
+    "remote_user": "Remote Server User with docker permissions",
+    "remoter_ssh_key": "Remote Server SSH access key",
+    "remote_port": "Instance Bannerlord Server Port",
+}
+```
 
 ---
 
