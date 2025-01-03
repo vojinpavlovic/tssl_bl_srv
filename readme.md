@@ -49,7 +49,7 @@ Secrets are stored in [Actions secrets and variables](https://docs.github.com/en
 
 In order to enable deployment workflow you need [Docker Hub](https://hub.docker.com) account.
 
-**Docker Hub**
+**Secrets Docker Hub**
 - DOCKER_USERNAME `Account Username from Docker Hub.`
 - DOCKER_PASSWORD `Account Password from Docker Hub.`
 - DOCKER_REPOSITORY `Repository from Docker Hub for Bannerlord Server`
@@ -65,7 +65,7 @@ Valid **INSTANCE_ID** is required in deployment workflow for pulling secrets for
 ---
 
 ## 🚀 Worfklows
-- [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
+[Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
 #### Arguments
@@ -75,7 +75,7 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
 - Required: `true`
 - Default Value: `latest`
 
-- [Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
+[Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
 
 #### Arguments
