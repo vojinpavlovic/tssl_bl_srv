@@ -61,7 +61,7 @@ Content of secret is **JSON** format. Please use [minifier](https://www.minifier
 ---
 
 ## 🚀 Worfklows
-### [Build](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
+### [Build Image to Docker Hub](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
 #### 🪶 Arguments
@@ -73,7 +73,7 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
     - 📙 `Description:` Uploading new build to the Docker Image Version e.g `stable` (production ready) version instead of `latest` (experimental)
 
 
-### [Deploy](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml) `Manual Execution`
+### [Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
 
 #### 🪶 Arguments
