@@ -50,7 +50,7 @@ jobs:
 
           echo "SSH setup completed for $REMOTE_SERVER_USER@$REMOTE_SERVER_IP"
 
-# Step 3: Deploy on Remote Server
+      # Step 3: Deploy on Remote Server
       - name: Deploy on Remote Server
         run: |
           # Ensure SSH key is available
@@ -68,7 +68,7 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
           echo "Pulling Docker image..."
-          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.docker_image }}:${{ github.event.inputs.docker }}"
+          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker }}"
 
           echo "Stopping existing container (if any)..."
           docker stop "${{ github.event.inputs.container-name }}" || true
