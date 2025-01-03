@@ -77,13 +77,13 @@ Deploys a container on the Training Server (remote server) using the latest imag
 #### 🪶 Arguments
 
 1. ✍️ **Instance Id**
-- 🏷️ Type: `string`
-- ✔️ Required: `true`
+    - 🏷️ Type: `string`
+    - ✔️ Required: `true`
 
 2. ✍️ **Docker Image Version**
-- 🏷️ Type: `string`
-- ✔️ Required: `true`
-- ✏️ Default Value: `latest`
+    - 🏷️ Type: `string`
+    - ✔️ Required: `true`
+    - ✏️ Default Value: `latest`
 
 ---
 
