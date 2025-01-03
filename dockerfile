@@ -73,7 +73,11 @@ RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLOR
 COPY /cfg/${BL_SRV_CONFIG} ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
-COPY assets/maps/ ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/
+COPY modules/multiplayer/SceneObj/ ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/
+
+# Copy server starter and make it executable
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 # Expose TCP port 7210
 EXPOSE 7210/tcp
@@ -82,19 +86,5 @@ EXPOSE 7210/tcp
 EXPOSE 7210/udp
 
 # Run the server
-CMD [ \
-    "dotnet", \
-    "TaleWorlds.Starter.DotNetCore.Linux.dll", \
-    "_MODULES_*Native*Multiplayer*_MODULES_", \
-    "/dedicatedcustomserverconfigfile", \
-    "../../Modules/Native/ds_server_config.txt", \
-    "/tickrate", \
-    "240", \
-    "/dedicatedcustomserverauthtoken", \
-    $BL_SRV_TOKEN, \
-    "/dedicatedcustomserver", \
-    "7210", \
-    "USER", \
-    "0", \
-    "/playerhosteddedicatedserver" \
-]
+CMD ["/start.sh"]
+
