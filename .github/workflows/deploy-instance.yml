@@ -34,13 +34,19 @@ jobs:
           # Debugging output to ensure the values are fetched
           echo "User: $REMOTE_SERVER_USER"
 
-          # Decode the SSH key from base64
-          REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY" | base64 --decode)
-          
+          # Decode the SSH key from base64 and ensure the correct format (remove any extra spaces or newlines)
+          REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY" | base64 --decode | tr -d '\r\n')
+
+          # SSH Setup
+          mkdir -p ~/.ssh
+          echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "SSH Key decoded and saved to ~/.ssh/id_rsa."
+
           # Set these as GitHub environment variables
-          echo "REMOTE_SSH_KEY=$REMOTE_SSH_KEY" >> $GITHUB_ENV
           echo "REMOTE_SERVER_IP=$REMOTE_SERVER_IP" >> $GITHUB_ENV
           echo "REMOTE_SERVER_USER=$REMOTE_SERVER_USER" >> $GITHUB_ENV
+          echo "BL_SRV_TOKEN=$BL_SRV_TOKEN" >> $GITHUB_ENV
 
       - name: Set up SSH
         run: |
