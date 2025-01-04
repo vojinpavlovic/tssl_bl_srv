@@ -41,7 +41,6 @@ jobs:
           mkdir -p ~/.ssh
           echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          echo "SSH Key decoded and saved to ~/.ssh/id_rsa."
 
           # Set these as GitHub environment variables
           echo "REMOTE_SERVER_IP=$REMOTE_SERVER_IP" >> $GITHUB_ENV
@@ -61,7 +60,7 @@ jobs:
           #mkdir -p ~/.ssh
           #echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          #ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
+          ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
 
           # SSH into the remote server to deploy
           ssh -T -i ~/.ssh/id_rsa "$REMOTE_SERVER_USER"@"$REMOTE_SERVER_IP" << EOF
