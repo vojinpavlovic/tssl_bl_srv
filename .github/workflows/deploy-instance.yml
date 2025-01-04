@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Extract secrets and set up SSH
-        uses: ./.github/workflows/helpers/extract-secrets.yml
+        uses: ./.github/workflows/actions/extract-secrets.yml
         with:
           instance-id: ${{ inputs.instance-id }}
 
