@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       docker_image_version:
-        description: "Docker image version (DEFAULT latest)"
+        description: "🏷️ Docker image version (DEFAULT latest)"
         required: true
         default: "latest"
 

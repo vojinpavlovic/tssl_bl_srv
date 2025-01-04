@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       instance-id:
-        description: "Remote Server Instance Id"
+        description: "🖥️ Remote Server Instance Id (Required)"
         required: true
       docker-image-version:
-        description: "Docker Image Version"
+        description: "🏷️ Docker image version (DEFAULT latest)"
         required: true
         default: "latest"
 

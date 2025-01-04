@@ -4,10 +4,10 @@ on:
     workflow_dispatch:
       inputs:
         instance-id:
-          description: "Remote Server Instance Id"
+          description: "🖥️ Remote Server Instance Id"
           required: true
         instance-action:
-          description: "Remote Server Action for Server Instance"
+          description: "🎬 Remote Server Action for Server Instance"
           type: choice
           options:
             - START
