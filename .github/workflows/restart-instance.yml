@@ -8,5 +8,11 @@ on:
         required: true
 
 jobs:
-    pull-and-deploy:
-        runs-on: ubuntu-latest
+  pull-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Extract secrets and set up SSH
+        uses: ./.github/workflows/helpers/extract-secrets.yml
+        with:
+          instance-id: ${{ github.event.inputs.instance-id }}
