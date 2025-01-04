@@ -56,12 +56,11 @@ jobs:
 
       - name: Deploy on Remote Server
         run: |
+          echo "ls ~/.ssh"
           # Ensure SSH key is available
-          mkdir -p ~/.ssh
-          echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
-
+  
           # SSH into the remote server to deploy
           ssh -T -i ~/.ssh/id_rsa "$REMOTE_SERVER_USER"@"$REMOTE_SERVER_IP" << EOF
           # Disable 'set -e' for more control
