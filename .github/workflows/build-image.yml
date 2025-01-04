@@ -25,9 +25,19 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Set up Docker cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/docker
+        key: ${{ runner.os }}-docker-${{ inputs.docker_image_version }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
+
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v4
       with:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker_image_version }}
+        cache-from: type=local,src=~/.cache/docker
+        cache-to: type=local,dest=~/.cache/docker,mode=max
