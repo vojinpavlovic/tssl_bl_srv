@@ -18,12 +18,14 @@ jobs:
     steps:
       - name: Extract secrets from JSON
         run: |
-          # Fetch the JSON secret and parse it with jq
+          # Fetch the base64-encoded JSON secret and decode it
           instance_id="${{ inputs.instance-id }}"
           
-          # Extract the specific instance secrets from the JSON object
-          DEPLOYMENT_CONFIG="${{ secrets.DEPLOYMENT_CONFIG }}"
+          # Extract the deployment config secret and decode from base64
+          DEPLOYMENT_CONFIG_BASE64="${{ secrets.DEPLOYMENT_CONFIG }}"
+          DEPLOYMENT_CONFIG=$(echo "$DEPLOYMENT_CONFIG_BASE64" | base64 --decode)
 
+          # Extract the specific instance secrets from the JSON object
           REMOTE_SSH_KEY=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_ssh_key")
           REMOTE_SERVER_IP=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_ip")
           REMOTE_SERVER_USER=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_user")
