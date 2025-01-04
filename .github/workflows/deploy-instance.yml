@@ -57,8 +57,8 @@ jobs:
       - name: Deploy on Remote Server
         run: |
           # Ensure SSH key is available
-          #mkdir -p ~/.ssh
-          #echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
+          mkdir -p ~/.ssh
+          echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
 
