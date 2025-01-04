@@ -70,7 +70,7 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
-COPY /cfg/${BL_SRV_CONFIG} ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
+COPY /config/server.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
 COPY modules/multiplayer/SceneObj/ ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/

@@ -19,7 +19,7 @@ jobs:
       - name: Extract secrets and set up SSH
         uses: ./.github/workflows/helpers/extract-secrets.yml
         with:
-          instance-id: ${{ github.event.inputs.instance-id }}
+          instance-id: ${{ inputs.instance-id }}
 
       # Step 3: Deploy on Remote Server
       - name: Deploy on Remote Server
@@ -42,17 +42,17 @@ jobs:
           docker pull "${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker-image-version }}"
 
           echo "Stopping existing container (if any)..."
-          docker stop "${{ github.event.inputs.instance-id }}" || true
-          docker rm "${{ github.event.inputs.instance-id }}" || true
+          docker stop "${{ inputs.instance-id }}" || true
+          docker rm "${{ inputs.instance-id }}" || true
 
           echo "Starting new Docker container..."
           docker run -d \
-            --name "${{ github.event.inputs.instance-id }}" \
+            --name "${{ inputs.instance-id }}" \
             -p "$REMOTE_PORT:7210/tcp" \
             -p "$REMOTE_PORT:7210/udp" \
             -e BL_SRV_TOKEN=$BL_SRV_TOKEN \
             -e BL_SRV_CONFIG=$SERVER_CFG_FILE \
-            "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker-image-version }}"
+            "${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}"
 
           echo "Checking running containers..."
           docker ps
