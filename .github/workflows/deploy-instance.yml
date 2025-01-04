@@ -27,7 +27,7 @@ jobs:
           REMOTE_SSH_KEY=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SSH_KEY")
           REMOTE_SERVER_IP=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SERVER_IP")
           REMOTE_SERVER_USER=$(echo "$deployment_config" | jq -r ".\"$instance_id\".REMOTE_SERVER_USER")
-          
+
           # Decode the SSH key from base64
           REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY_BASE64" | base64 --decode)
           
@@ -71,15 +71,15 @@ jobs:
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
           echo "Pulling Docker image..."
-          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ github.event.inputs.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker-image-version }}"
+          docker pull "${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ github.event.inputs.docker-image-version }}"
 
           echo "Stopping existing container (if any)..."
-          docker stop "${{ github.event.inputs.container-name }}" || true
-          docker rm "${{ github.event.inputs.container-name }}" || true
+          docker stop "${{ github.event.inputs.instance-id }}" || true
+          docker rm "${{ github.event.inputs.instance-id }}" || true
 
           echo "Starting new Docker container..."
           docker run -d \
-            --name "${{ github.event.inputs.container-name }}" \
+            --name "${{ github.event.inputs.instance-id }}" \
             -p "$REMOTE_PORT:7210/tcp" \
             -p "$REMOTE_PORT:7210/udp" \
             -e BL_SRV_TOKEN=$BL_SRV_TOKEN \

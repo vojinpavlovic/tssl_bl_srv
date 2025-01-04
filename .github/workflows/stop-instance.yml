@@ -1,0 +1,12 @@
+name: Stop Instance on Remote Server
+
+on:
+  workflow_dispatch:
+    inputs:
+      instance-id:
+        description: "Remote Server Instance Id"
+        required: true
+
+jobs:
+    pull-and-deploy:
+        runs-on: ubuntu-latest

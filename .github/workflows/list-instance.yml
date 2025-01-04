@@ -1,0 +1,8 @@
+name: List all Instances on Remote Server
+
+on:
+  workflow_dispatch:
+
+jobs:
+    pull-and-deploy:
+        runs-on: ubuntu-latest
