@@ -1,4 +1,4 @@
-name: Delete Instance on Remote Server
+name: Instance actions on Remote Server
 
 on:
     workflow_dispatch:
@@ -6,6 +6,14 @@ on:
         instance-id:
           description: "Remote Server Instance Id"
           required: true
+        instance-action:
+          description: "Remote Server Action for Server Instance"
+          type: choice
+          options:
+            - START
+            - STOP
+            - RESTART
+            - DELETE
 
 jobs:
   pull-and-deploy:
