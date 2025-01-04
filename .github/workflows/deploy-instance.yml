@@ -20,12 +20,17 @@ jobs:
         run: |
           # Fetch the JSON secret and parse it with jq
           instance_id="${{ inputs.instance-id }}"
-
+          
           # Extract the specific instance secrets from the JSON object
-          REMOTE_SSH_KEY=$(echo "${{ secrets.DEPLOYMENT_CONFIG }}" | jq -r ".\"$instance_id\".remote_ssh_key")
-          REMOTE_SERVER_IP=$(echo "${{ secrets.DEPLOYMENT_CONFIG }}" | jq -r ".\"$instance_id\".remote_ip")
-          REMOTE_SERVER_USER=$(echo "${{ secrets.DEPLOYMENT_CONFIG }}" | jq -r ".\"$instance_id\".remote_user")
-          BL_SRV_TOKEN=$(echo "${{ secrets.DEPLOYMENT_CONFIG }}" | jq -r ".\"$instance_id\".token")
+          DEPLOYMENT_CONFIG="${{ secrets.DEPLOYMENT_CONFIG }}"
+
+          REMOTE_SSH_KEY=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_ssh_key")
+          REMOTE_SERVER_IP=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_ip")
+          REMOTE_SERVER_USER=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_user")
+          BL_SRV_TOKEN=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".token")
+      
+          # Debugging output to ensure the values are fetched
+          echo "User: $REMOTE_SERVER_USER"
 
           # Decode the SSH key from base64
           REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY" | base64 --decode)
