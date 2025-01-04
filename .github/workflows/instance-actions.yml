@@ -1,4 +1,4 @@
-name: Instance actions on Remote Server
+name: 🕹️ Instance actions on Remote Server
 
 on:
     workflow_dispatch:

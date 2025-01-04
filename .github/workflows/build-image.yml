@@ -1,4 +1,4 @@
-name: 1. Build Image to Docker Hub
+name: 📦 Build Image to Docker Hub
 
 on:
   workflow_dispatch:

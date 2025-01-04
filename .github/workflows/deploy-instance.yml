@@ -1,4 +1,4 @@
-name: 2. Deploy to Remote Server
+name: 🚀 Deploy to Remote Server
 
 on:
   workflow_dispatch:
