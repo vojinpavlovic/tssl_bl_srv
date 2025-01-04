@@ -21,7 +21,6 @@ jobs:
         with:
           instance-id: ${{ inputs.instance-id }}
 
-      # Step 3: Deploy on Remote Server
       - name: Deploy on Remote Server
         run: |
           # Ensure SSH key is available
