@@ -34,9 +34,6 @@ jobs:
           # Debugging output to ensure the values are fetched
           echo "User: $REMOTE_SERVER_USER"
 
-          # Decode the SSH key from base64 and ensure the correct format (remove any extra spaces or newlines)
-          REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY" | base64 --decode | tr -d '\r\n')
-
           # SSH Setup
           mkdir -p ~/.ssh
           echo "$REMOTE_SSH_KEY" > ~/.ssh/id_rsa
@@ -47,6 +44,8 @@ jobs:
           echo "REMOTE_SERVER_USER=$REMOTE_SERVER_USER" >> $GITHUB_ENV
           echo "BL_SRV_TOKEN=$BL_SRV_TOKEN" >> $GITHUB_ENV
           
+          # Decode the SSH key from base64 and ensure the correct format (remove any extra spaces or newlines)
+          REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY" | base64 --decode')
           echo "SSH Key decoded and saved to ~/.ssh/id_rsa."
           
           # Scan the remote server's SSH key and add it to known_hosts
