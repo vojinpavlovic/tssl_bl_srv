@@ -3,8 +3,8 @@ name: 🚀 Deploy to Remote Server
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: "♻️ Environment Configuration Name"
+      configuration-id:
+        description: "♻️ Environment Configuration Id"
         required: true
       docker-image-version:
         description: "🏷️ Docker image version (DEFAULT latest)"
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ inputs.environment }}
+      name: ${{ inputs.configuration-id }}
 
     steps:
     - name: Set up SSH
@@ -39,11 +39,11 @@ jobs:
         docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
         
         echo "Stopping existing container (if any)..."
-        docker stop ${{ inputs.environment }} || true
-        docker rm ${{ inputs.environment }} || true
+        docker stop ${{ inputs.configuration-id }} || true
+        docker rm ${{ inputs.configuration-id }} || true
         
         echo "Starting new Docker container..."
-        docker run -d --name ${{ inputs.environment }} \
+        docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN="${{ secrets.TW_TOKEN }}" \
           -p 7210:7210/tcp \
           -p 7210:7210/udp \

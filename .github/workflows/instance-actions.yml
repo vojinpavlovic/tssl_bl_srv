@@ -3,7 +3,7 @@ name: 🕹️ Instance actions on Remote Server
 on:
     workflow_dispatch:
       inputs:
-        environment:
+        configuration-id:
           description: "♻️ Environment Configuration Name"
           required: true
         instance-action:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ inputs.environment }}
+      name: ${{ inputs.configuration-id }}
 
     steps:
       - name: Set up SSH
@@ -37,7 +37,7 @@ jobs:
           set +e
   
           # Set the Docker container name based on the environment
-          CONTAINER_NAME=${{ secrets.CONTAINER_NAMER }}
+          CONTAINER_NAME=${{ inputs.configuration-id }}
           
           # Perform action based on the input
           case "${{ inputs.instance-action }}" in
