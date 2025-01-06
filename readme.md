@@ -13,12 +13,14 @@ Installation Links:
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
 #### 2. Build Docker Image
-`docker build -t blsrv .`
+`docker build -t tssl_sample_srv .`
 
 #### 3. Run Docker Image
-`docker run -d --name tssl_sample_srv -p 7210:7210/tcp -p 7210:7210/udp blsrv`
+`docker run -d --name tssl_sample_srv -e TW_TOKEN="Your TW Token" -p 7210:7210/tcp -p 7210:7210/udp tssl_sample_srv `
 
-Replace `tssl_sample_srv` with desired container name
+Replace `tssl_sample_srv` with desired container name and `TW_TOKEN` with Generated Taleworld Token.
+
+For more informations about Taleworld Token, please check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
 
 #### Note: 
 

@@ -86,5 +86,10 @@ EXPOSE 7210/tcp
 EXPOSE 7210/udp
 
 # Run the server
-CMD ["/start.sh"]
-
+CMD dotnet TaleWorlds.Starter.DotNetCore.Linux.dll "_MODULES_*Native*Multiplayer*_MODULES_" \
+  /dedicatedcustomserverconfigfile "../../Modules/Native/ds_server_config.txt" \
+  /tickrate 240 \
+  /dedicatedcustomserverauthtoken "$TW_TOKEN" \
+  /dedicatedcustomserver 7210 \
+  USER 0 \
+  /playerhosteddedicatedserver
