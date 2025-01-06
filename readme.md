@@ -55,6 +55,8 @@ In order to enable workflow, it is required to setup secrets. To find more infor
 
 Secrets are managed by [Environments for deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) on GitHub.
 
+![Secret Repository Example](.etc/readme-assets/secret-repository.png)
+
 - **DOCKER_USERNAME**: `Account Username from Docker Hub.`
 - **DOCKER_PASSWORD**: `Account Password from Docker Hub.`
 - **DOCKER_REPOSITORY**: `Repository from Docker Hub for Bannerlord Server`
@@ -63,7 +65,6 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 - **SERVER_SSH_KEY**: `The user SSH key for server access`
 - **SERVER_PORT**: `Exposed Container port to the Public`
 - **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
-![Secret Repository Example](.etc/readme-assets/secret-repository.png)
 ---
 
 ## 🚀 Worfklows
