@@ -27,12 +27,15 @@ Installation Links:
 ```
 
 - **Container name**
+
 Replace `--name your_server_container_name` with desired container name for your server.
 
 - **TW_TOKEN** 
+
 For more informations about Taleworld Token, please check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
 
 - **MODULES**
+
 If you want to enable your custom module, use MODULES enviornment variable `-e MODULES="_MODULES_*Native*Multiplayer*<<Your_Module_Here>>*_MODULES_`
 
 In order to import your module - you just need to add your module into `modules/` directory. Dockerfile will copy all files from `modules/` into `bl_srv/Modules/` inside a container. 
