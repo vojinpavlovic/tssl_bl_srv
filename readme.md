@@ -31,42 +31,32 @@ In order to enable workflow, it is required to setup secrets. To find more infor
 
 ## 🔐 Github Stored Secrets
 
-Secrets are stored in [Actions secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) on GitHub.
+Secrets are managed by [Environments for deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) on GitHub.
 
-
-#### 🐳 Secrets for Docker Hub Account 
-- DOCKER_USERNAME `Account Username from Docker Hub.`
-- DOCKER_PASSWORD `Account Password from Docker Hub.`
-- DOCKER_REPOSITORY `Repository from Docker Hub for Bannerlord Server`
-
-#### 🌐 Secrets for Deployment on Remote Server
-Your Secret Repository name should be called **DEPLOYMENT_CONFIG**
-
-Content of secret is **JSON** format. Please use [minifier](https://www.minifier.org) to minify your JSON before uploading/updating secret in `Github Stored Secrets`
-
-```json
-{
-    "unique_instance_id": {
-        "token": "Taleworld Server Token",
-        "remote_ip": "Remote Server IPv4 Address",
-        "remote_user": "Remote Server User with docker permissions",
-        "remoter_ssh_key": "Remote Server SSH access key",
-        "remote_port": "Instance Bannerlord Server Port",
-    }
-}
-```
-
-**Note:** Instance Identifier must be **unique** accross all secrets. 
+- **DOCKER_USERNAME**: `Account Username from Docker Hub.`
+- **DOCKER_PASSWORD**: `Account Password from Docker Hub.`
+- **DOCKER_REPOSITORY**: `Repository from Docker Hub for Bannerlord Server`
+- **SERVER_USER**: `The server user for deployments`
+- **SERVER_SSH_KEY**: `The SSH key for server access`
+- **SERVER_IPV4**: `Server IP address for deployment`
+- **SERVER_PORT**: `Container port for public network`
+- **CONTAINER_NAME**: `Container name for deployment`
+- **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
 
 ---
 
 ## 🚀 Worfklows
-### [Build Image to Docker Hub](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
+### [📦 Build Image to Docker Hub](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
 #### 🪶 Arguments
 
-1. ✍️ **Docker Image Version**
+1. ✍️ **♻️ Enviornment Configuration Key**
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` none (must be existing)
+    - 📙 `Description:` Github Enviornment repository name for deployment  
+2. ✍️ **Docker Image Version**
     - 🏷️ `Type:` string
     - ✔️ `Required:` true
     - ✏️ `Default Value:` latest
@@ -78,11 +68,11 @@ Deploys a container on the Training Server (remote server) using the latest imag
 
 #### 🪶 Arguments
 
-1. ✍️ **Instance Id**
+1. ✍️ **♻️ Enviornment Configuration Key**
     - 🏷️ `Type:` string
     - ✔️ `Required:` true
-    - 📙 `Description:` Must be valid instance identifier within **DEPLOYMENT_CONFIG** content
-
+    - ✏️ `Default Value:` none (must be existing)
+    - 📙 `Description:` Github Enviornment repository name for deployment  
 2. ✍️ **Docker Image Version**
     - 🏷️ `Type:` string
     - ✔️ `Required:` true

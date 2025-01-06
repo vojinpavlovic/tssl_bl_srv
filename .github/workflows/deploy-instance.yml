@@ -39,11 +39,11 @@ jobs:
         docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
         
         echo "Stopping existing container (if any)..."
-        docker stop ${{ secrets.CONTAINER_NAMER }} || true
-        docker rm ${{ secrets.CONTAINER_NAMER }} || true
+        docker stop ${{ secrets.CONTAINER_NAME }} || true
+        docker rm ${{ secrets.CONTAINER_NAME }} || true
         
         echo "Starting new Docker container..."
-        docker run -d --name ${{ secrets.CONTAINER_NAMER }} -p ${{ secrets.SERVER_PORT }}:7210/tcp -p ${{ secrets.SERVER_PORT }}:7210/udp ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
+        docker run -d --name ${{ secrets.CONTAINER_NAME }} -p ${{ secrets.SERVER_PORT }}:7210/tcp -p ${{ secrets.SERVER_PORT }}:7210/udp ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
         
         echo "Checking running containers..."
         docker ps
