@@ -63,7 +63,7 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 - **SERVER_SSH_KEY**: `The user SSH key for server access`
 - **SERVER_PORT**: `Exposed Container port to the Public`
 - **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
-
+![Secret Repository Example](.etc/readme-assets/secret-repository.png)
 ---
 
 ## 🚀 Worfklows
