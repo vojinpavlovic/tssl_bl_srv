@@ -3,6 +3,9 @@ name: 📦 Build Image to Docker Hub
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        description: "♻️ Environment Configuration Name"
+        required: true
       docker_image_version:
         description: "🏷️ Docker image version (DEFAULT latest)"
         required: true
@@ -11,6 +14,9 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ inputs.environment }}
 
     steps:
     - name: Checkout repository

@@ -29,18 +29,14 @@ jobs:
           REMOTE_SSH_KEY=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_ssh_key")
           REMOTE_SERVER_IP=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_ip")
           REMOTE_SERVER_USER=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".remote_user")
-          BL_SRV_TOKEN=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".token")
-      
-          # Debugging output to ensure the values are fetched
-          echo "User: $REMOTE_SERVER_USER"
+          BL_SRV_TOKEN=$(echo "$DEPLOYMENT_CONFIG" | jq -r ".\"$instance_id\".token") 
 
           # Set these as GitHub environment variables
           echo "REMOTE_SERVER_IP=$REMOTE_SERVER_IP" >> $GITHUB_ENV
           echo "REMOTE_SERVER_USER=$REMOTE_SERVER_USER" >> $GITHUB_ENV
           echo "BL_SRV_TOKEN=$BL_SRV_TOKEN" >> $GITHUB_ENV
           
-          
-          # Decode the SSH key from base64 and ensure the correct format (remove any extra spaces or newlines)
+          # Decode the SSH key from base64 and ensure the correct format
           
           REMOTE_SSH_KEY=$(echo "$REMOTE_SSH_KEY" | base64 --decode)
           echo "SSH Key decoded and saved to ~/.ssh/id_rsa."
@@ -56,7 +52,6 @@ jobs:
 
       - name: Deploy on Remote Server
         run: |
-          cat ~/.ssh/id_rsa
           # Ensure SSH key is available
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$REMOTE_SERVER_IP" >> ~/.ssh/known_hosts
@@ -77,6 +72,7 @@ jobs:
           docker rm "${{ inputs.instance-id }}" || true
 
           echo "Starting new Docker container..."
+          
           docker run -d \
             --name "${{ inputs.instance-id }}" \
             -p "$REMOTE_PORT:7210/tcp" \
