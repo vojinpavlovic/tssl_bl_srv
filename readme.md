@@ -26,8 +26,8 @@ Installation Links:
     tssl_bl_srv
 ```
 
-- For more informations about Taleworld Token, please check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
-- For more informations about Custom Modules, please check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
+- For more informations about Taleworld Token, check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
+- For more informations about Custom Modules, check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
 
 #### 👉 Note: 
 
