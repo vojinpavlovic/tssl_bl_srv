@@ -49,30 +49,6 @@ In order to enable workflow, it is required to setup secrets. To find more infor
 
 ---
 
-## 🔐 Github Stored Secrets
-
-Secrets are managed by [Environments for deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) on GitHub.
-
-![Secret Repository Example](.etc/readme-assets/secret-repository.png)
-
-- **DOCKER_USERNAME**: `Account Username from Docker Hub.`
-- **DOCKER_PASSWORD**: `Account Password from Docker Hub.`
-- **DOCKER_REPOSITORY**: `Repository from Docker Hub for Bannerlord Server`
-- **SERVER_IPV4**: `Server IP address for deployment`
-- **SERVER_USER**: `The server user for deployments with docker execute permissions`
-- **SERVER_SSH_KEY**: `The user SSH key for server access`
-- **SERVER_PORT**: `Exposed Container port to the Public`
-- **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
-
-Beside secrets we have configurable variables called Enviornment variables.
-
-![Enviornment Variables Example](.etc/readme-assets/enviornment-variables.png)
-
-- **TICK_RATE**: `A higher tickrate means more updates per second for the clients`
-- **MODULES**: `If you want to enable your custom module, use MODULES enviornment variable, it only includes Multiplayer by default, but can be overriden using MODULES enviornment variable in deployment workflow`.
-
----
-
 ## 🚀 Worfklows
 ### [📦 Build Image to Docker Hub](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
@@ -129,6 +105,28 @@ Run an action upon server container using SSH and Docker. The available actions 
     - 📙 `Description:` Choose an action to run upon Remote Server using Docker
 
 ---
+
+## 🔐 Github Stored Secrets
+
+Secrets are managed by [Environments for deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) on GitHub.
+
+![Secret Repository Example](.etc/readme-assets/secret-repository.png)
+
+- **DOCKER_USERNAME**: `Account Username from Docker Hub.`
+- **DOCKER_PASSWORD**: `Account Password from Docker Hub.`
+- **DOCKER_REPOSITORY**: `Repository from Docker Hub for Bannerlord Server`
+- **SERVER_IPV4**: `Server IP address for deployment`
+- **SERVER_USER**: `The server user for deployments with docker execute permissions`
+- **SERVER_SSH_KEY**: `The user SSH key for server access`
+- **SERVER_PORT**: `Exposed Container port to the Public`
+- **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
+
+Beside secrets we have configurable variables called Enviornment variables.
+
+![Enviornment Variables Example](.etc/readme-assets/enviornment-variables.png)
+
+- **TICK_RATE**: `A higher tickrate means more updates per second for the clients`
+- **MODULES**: `If you want to enable your custom module, use MODULES enviornment variable, it only includes Multiplayer by default, but can be overriden using MODULES enviornment variable in deployment workflow`.
 
 ## 🧾 License
 
