@@ -11,8 +11,8 @@ on:
           type: choice
           options:
             - START
-            - STOP
             - RESTART
+            - STOP
             - DELETE
 
 jobs:

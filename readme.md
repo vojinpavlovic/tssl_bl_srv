@@ -63,9 +63,29 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
     - 📙 `Description:` Uploading new build to the Docker Image Version e.g `stable` (production ready) version instead of `latest` (experimental)
 
 
-### [Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
+### [🚀 Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
 
+#### 🪶 Arguments
+
+1. ✍️ **♻️ Enviornment Configuration Key**
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` none (must be existing)
+    - 📙 `Description:` Github Enviornment repository name for deployment  
+2. ✍️ **🎬 Remote Server Action for Server Instance**
+    - 🏷️ `Type:` choice
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` START
+    - ☰  `Options`: 
+        - START
+        - RESTART
+        - STOP
+        - DELETE
+    - 📙 `Description:` Choose an action to run upon Remote Server using Doker
+
+### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
+Run an action upon server container
 #### 🪶 Arguments
 
 1. ✍️ **♻️ Enviornment Configuration Key**
