@@ -3,8 +3,8 @@ name: 🕹️ Instance actions on Remote Server
 on:
     workflow_dispatch:
       inputs:
-        instance-id:
-          description: "🖥️ Remote Server Instance Id (Required)"
+        environment:
+          description: "♻️ Environment Configuration Name"
           required: true
         instance-action:
           description: "🎬 Remote Server Action for Server Instance"
@@ -19,8 +19,51 @@ jobs:
   pull-and-deploy:
     runs-on: ubuntu-latest
 
+    environment:
+      name: ${{ inputs.environment }}
+
     steps:
-      - name: Extract secrets and set up SSH
-        uses: ./.github/workflows/helpers/extract-secrets.yml
-        with:
-          instance-id: ${{ github.event.inputs.instance-id }}
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_IPV4 }} >> ~/.ssh/known_hosts
+  
+      - name: Perform Instance Action on Remote Server
+        run: |
+          ssh -T -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IPV4 }} << EOF
+          # Disable 'set -e' for more control
+          set +e
+  
+          # Set the Docker container name based on the environment
+          CONTAINER_NAME=${{ secrets.CONTAINER_NAMER }}
+          
+          # Perform action based on the input
+          case "${{ inputs.instance-action }}" in
+            "START")
+              echo "Starting Docker container..."
+              docker start \$CONTAINER_NAME || echo "Docker container not found."
+              ;;
+            "STOP")
+              echo "Stopping Docker container..."
+              docker stop \$CONTAINER_NAME || echo "Docker container not running."
+              ;;
+            "RESTART")
+              echo "Restarting Docker container..."
+              docker restart \$CONTAINER_NAME || echo "Docker container not found."
+              ;;
+            "DELETE")
+              echo "Deleting Docker container..."
+              docker stop \$CONTAINER_NAME || true
+              docker rm \$CONTAINER_NAME || true
+              echo "Docker container deleted."
+              ;;
+            *)
+              echo "Invalid action: \$ACTION"
+              exit 1
+              ;;
+          esac
+  
+          echo "Action '${{ inputs.instance-action }}' completed on the container."
+          EOF
