@@ -3,7 +3,7 @@ FROM debian:bullseye-slim
 
 # Set environment variables
 ENV STEAMCMDDIR=/steamcmd
-ENV BANNERLORDDIR=/tssl
+ENV BANNERLORDDIR=/bl_srv
 ENV PATH="$PATH:/usr/share/dotnet"
 
 # Install Linux dependencies and add Microsoft repository

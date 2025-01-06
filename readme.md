@@ -37,7 +37,7 @@ For more informations about Taleworld Token, please check out [Taleworld - Hosti
 - **MODULES**
 If you want to enable your custom module, use MODULES enviornment variable `-e MODULES="_MODULES_*Native*Multiplayer*<<Your_Module_Here>>*_MODULES_`
 
-In order to import your module - you just need to add your module into `modules/` directory. Dockerfile will copy all files from `modules/` into `Modules/`.
+In order to import your module - you just need to add your module into `modules/` directory. Dockerfile will copy all files from `modules/` into `bl_srv/Modules/` inside a container.
 
 - **TICK_RATE**
 A higher tickrate means more updates per second for the clients connected to your server, but may also increase resource usage. The default tickrate is 60 - but you can go as long as 240 from MB: Bannerlord version 1.2.
