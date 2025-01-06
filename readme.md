@@ -13,23 +13,23 @@ Installation Links:
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
 #### 2. Build Docker Image
-`docker build -t tssl_sample_server .`
+`docker build -t tssl_bl_srv .`
 
 #### 3. Run Docker Image
 ```
-    docker run -d --name tssl_sample_server \
+    docker run -d --name your_server_container_name \
     - e TW_TOKEN="Your Taleworld Server Token" \
     - e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
     - e TICK_RATE=60 \
     - p 7210:7210/tcp
     - p 7210:7210/udp
-    tssl_sample_server
+    tssl_bl_srv
 ```
 
 **Dockerfile Enviornment Variables**
 
 - **Container name**
-Replace `tssl_sample_srv` with desired container name for your server.
+Replace `--name your_server_container_name` with desired container name for your server.
 
 - **TW_TOKEN** 
 For more informations about Taleworld Token, please check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
@@ -37,7 +37,7 @@ For more informations about Taleworld Token, please check out [Taleworld - Hosti
 - **MODULES**
 If you want to enable your custom module, use MODULES enviornment variable `-e MODULES="_MODULES_*Native*Multiplayer*<<Your_Module_Here>>*_MODULES_`
 
-In order to import your module - you just need to add your module into `modules/` directory. Dockerfile will copy all files from `modules/` into `bl_srv/Modules/` inside a container.
+In order to import your module - you just need to add your module into `modules/` directory. Dockerfile will copy all files from `modules/` into `bl_srv/Modules/` inside a container. 
 
 - **TICK_RATE**
 A higher tickrate means more updates per second for the clients connected to your server, but may also increase resource usage. The default tickrate is 60 - but you can go as long as 240 from MB: Bannerlord version 1.2.
