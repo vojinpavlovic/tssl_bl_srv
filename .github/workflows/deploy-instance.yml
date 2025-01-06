@@ -43,7 +43,7 @@ jobs:
         docker rm ${{ secrets.CONTAINER_NAME }} || true
         
         echo "Starting new Docker container..."
-
+        echo ${{ secrets.CONTAINER_NAME }}
         docker run -d --name ${{ secrets.CONTAINER_NAME }} \
           -e TW_TOKEN="${{ secrets.TW_TOKEN }}" \
           -p 7210:7210/tcp \
