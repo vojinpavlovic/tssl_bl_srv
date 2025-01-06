@@ -65,6 +65,14 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 - **SERVER_SSH_KEY**: `The user SSH key for server access`
 - **SERVER_PORT**: `Exposed Container port to the Public`
 - **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
+
+Beside secrets we have configurable variables called Enviornment variables.
+
+![Enviornment Variables Example](.etc/readme-assets/enviornment-variables.png)
+
+- **TICK_RATE**: `A higher tickrate means more updates per second for the clients`
+- **MODULES**: `If you want to enable your custom module, use MODULES enviornment variable, it only includes Multiplayer by default, but can be overriden using MODULES enviornment variable in deployment workflow`.
+
 ---
 
 ## 🚀 Worfklows
