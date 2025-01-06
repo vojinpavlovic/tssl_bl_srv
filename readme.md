@@ -38,10 +38,10 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 - **DOCKER_USERNAME**: `Account Username from Docker Hub.`
 - **DOCKER_PASSWORD**: `Account Password from Docker Hub.`
 - **DOCKER_REPOSITORY**: `Repository from Docker Hub for Bannerlord Server`
-- **SERVER_USER**: `The server user for deployments`
-- **SERVER_SSH_KEY**: `The SSH key for server access`
 - **SERVER_IPV4**: `Server IP address for deployment`
-- **SERVER_PORT**: `Container port for public network`
+- **SERVER_USER**: `The server user for deployments with docker execute permissions`
+- **SERVER_SSH_KEY**: `The user SSH key for server access`
+- **SERVER_PORT**: `Exposed Container port to the Public`
 - **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
 
 ---
