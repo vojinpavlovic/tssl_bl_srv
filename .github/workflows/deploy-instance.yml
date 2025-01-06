@@ -40,11 +40,11 @@ jobs:
         docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
         
         echo "Stopping existing container (if any)..."
-        docker stop ${{ env.CONTAINER_NAME }} || true
-        docker rm ${{ env.CONTAINER_NAME }} || true
+        docker stop ${{ inputs.environment }} || true
+        docker rm ${{ inputs.environment }} || true
         
         echo "Starting new Docker container..."
-        docker run -d --name ${{ env.CONTAINER_NAME }} \
+        docker run -d --name ${{ inputs.environment }} \
           -e TW_TOKEN="${{ secrets.TW_TOKEN }}" \
           -p 7210:7210/tcp \
           -p 7210:7210/udp \
