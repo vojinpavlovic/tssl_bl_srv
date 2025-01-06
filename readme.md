@@ -13,12 +13,24 @@ Installation Links:
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
 #### 2. Build Docker Image
-`docker build -t tssl_sample_srv .`
+`docker build -t tssl_sample_server .`
 
 #### 3. Run Docker Image
-`docker run -d --name tssl_sample_srv -e TW_TOKEN="Your TW Token" -p 7210:7210/tcp -p 7210:7210/udp tssl_sample_srv `
+```
+    docker run -d --name tssl_sample_server \
+    - e TW_TOKEN="Your Taleworld Server Token" \
+    - e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
+    - e TICK_RATE=240 \
+    - p 7210:7210/tcp
+    -p 7210:7210/udp
+    tssl_sample_server
+```
 
 Replace `tssl_sample_srv` with desired container name and `TW_TOKEN` with Generated Taleworld Token.
+
+If you want to enable your module, use MODULES enviornment variable `-e MODULES="_MODULES_*Native*Multiplayer*<<Your_Module_Here>>*_MODULES_`
+
+A higher tickrate means more updates per second for the clients connected to your server, but may also increase resource usage. The Default Taleworld tickrate is 60. 
 
 For more informations about Taleworld Token, please check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
 
@@ -100,10 +112,6 @@ Run an action upon server container using SSH and Docker. The available actions 
         - STOP
         - DELETE
     - 📙 `Description:` Choose an action to run upon Remote Server using Docker
-
----
-
-## 🧾 
 
 ---
 
