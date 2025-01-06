@@ -73,6 +73,22 @@ Deploys a container on the Training Server (remote server) using the latest imag
     - ✔️ `Required:` true
     - ✏️ `Default Value:` none (must be existing)
     - 📙 `Description:` Github Enviornment repository name for deployment  
+2. ✍️ **Docker Image Version**
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` latest
+    - 📙 `Description:` Version you previously build e.g `stable` (production ready) version instead of `latest` (experimental)
+
+### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
+Run an action upon server container using SSH and Docker. The available actions are START,RESTART,STOP,DELETE in workflow.
+
+#### 🪶 Arguments
+
+1. ✍️ **♻️ Enviornment Configuration Key**
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` none (must be existing)
+    - 📙 `Description:` Github Enviornment repository name for deployment  
 2. ✍️ **🎬 Remote Server Action for Server Instance**
     - 🏷️ `Type:` choice
     - ✔️ `Required:` true
@@ -82,22 +98,7 @@ Deploys a container on the Training Server (remote server) using the latest imag
         - RESTART
         - STOP
         - DELETE
-    - 📙 `Description:` Choose an action to run upon Remote Server using Doker
-
-### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
-Run an action upon server container
-#### 🪶 Arguments
-
-1. ✍️ **♻️ Enviornment Configuration Key**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` none (must be existing)
-    - 📙 `Description:` Github Enviornment repository name for deployment  
-2. ✍️ **Docker Image Version**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` latest
-    - 📙 `Description:` Version you previously build e.g `stable` (production ready) version instead of `latest` (experimental)
+    - 📙 `Description:` Choose an action to run upon Remote Server using Docker
 
 ---
 
