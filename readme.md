@@ -44,7 +44,7 @@ In order to import your module - you just need to add your module into `modules/
 
 A higher tickrate means more updates per second for the clients connected to your server, but may also increase resource usage. The default tickrate is 60 - but you can go as long as 240 from MB: Bannerlord version 1.2.
 
-#### Note: 
+#### 👉 Note: 
 
 We recommend to use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https://hub.docker.com) these images can be deployed to a remote server. 
 
