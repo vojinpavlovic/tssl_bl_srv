@@ -73,7 +73,7 @@ RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLOR
 COPY /config/server.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
-COPY modules/multiplayer/SceneObj/ ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/
+COPY modules/ ${BANNERLORDDIR}/Modules/
 
 # Copy server starter and make it executable
 COPY start.sh /start.sh
