@@ -5,17 +5,17 @@ TSSL is a dockerized Bannerlord server setup that allows you to quickly deploy a
 
 ## 🚀 Get Started
 
-##### 1. 📥 Install Docker
+#### 📥 Install Docker
  Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
 
 Installation Links:
 - [Linux Debian](https://docs.docker.com/engine/install/debian/)
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
-#### 2. 🔧 Build Docker Image
+#### 🔧 Build Docker Image
 `docker build -t tssl_bl_srv .`
 
-#### 3. 🚀 Run Docker Image
+#### 🚀 Run Docker Image
 ```
     docker run -d --name your_server_container_name \
     - e TW_TOKEN="Your Taleworld Server Token" \
