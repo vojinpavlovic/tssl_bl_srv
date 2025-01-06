@@ -20,19 +20,27 @@ Installation Links:
     docker run -d --name tssl_sample_server \
     - e TW_TOKEN="Your Taleworld Server Token" \
     - e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
-    - e TICK_RATE=240 \
+    - e TICK_RATE=60 \
     - p 7210:7210/tcp
-    -p 7210:7210/udp
+    - p 7210:7210/udp
     tssl_sample_server
 ```
 
-Replace `tssl_sample_srv` with desired container name and `TW_TOKEN` with Generated Taleworld Token.
+**Dockerfile Enviornment Variables**
 
-If you want to enable your module, use MODULES enviornment variable `-e MODULES="_MODULES_*Native*Multiplayer*<<Your_Module_Here>>*_MODULES_`
+- **Container name**
+Replace `tssl_sample_srv` with desired container name for your server.
 
-A higher tickrate means more updates per second for the clients connected to your server, but may also increase resource usage. The Default Taleworld tickrate is 60. 
-
+- **TW_TOKEN** 
 For more informations about Taleworld Token, please check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
+
+- **MODULES**
+If you want to enable your custom module, use MODULES enviornment variable `-e MODULES="_MODULES_*Native*Multiplayer*<<Your_Module_Here>>*_MODULES_`
+
+In order to import your module - you just need to add your module into `modules/` directory. Dockerfile will copy all files from `modules/` into `Modules/`.
+
+- **TICK_RATE**
+A higher tickrate means more updates per second for the clients connected to your server, but may also increase resource usage. The default tickrate is 60 - but you can go as long as 240 from MB: Bannerlord version 1.2.
 
 #### Note: 
 
