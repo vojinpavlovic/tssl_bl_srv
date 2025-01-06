@@ -46,7 +46,7 @@ A higher tickrate means more updates per second for the clients connected to you
 
 #### 👉 Note: 
 
-We recommend to use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https://hub.docker.com) these images can be deployed to a remote server. 
+ You can use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https://hub.docker.com) these images can be deployed to a remote server. 
 
 In order to enable workflow, it is required to setup secrets. To find more informations visit 
 `🔐 Github Stored Secrets` section.
