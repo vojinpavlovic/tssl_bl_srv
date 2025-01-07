@@ -82,10 +82,19 @@ EXPOSE 7210/tcp
 EXPOSE 7210/udp
 
 # Run the server
-CMD dotnet TaleWorlds.Starter.DotNetCore.Linux.dll "$MODULES" \
-  /dedicatedcustomserverconfigfile "../../Modules/Native/ds_server_config.txt" \
-  /tickrate "$TICK_RATE" \
-  /dedicatedcustomserverauthtoken "$TW_TOKEN" \
-  /dedicatedcustomserver 7210 \
-  USER 0 \
-  /playerhosteddedicatedserver
+CMD [ \
+    "dotnet", \
+    "TaleWorlds.Starter.DotNetCore.Linux.dll", \
+    "$MODULES"", \
+    "/dedicatedcustomserverconfigfile", \
+    "../../Modules/Native/tssl_training.txt", \
+    "/tickrate", \
+    "$TICK_RATE", \
+    "/dedicatedcustomserverauthtoken", \
+    "$TW_TOKEN", \
+    "/dedicatedcustomserver", \
+    "7210", \
+    "USER", \
+    "0", \
+    "/playerhosteddedicatedserver" \
+]
