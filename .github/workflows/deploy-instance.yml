@@ -46,8 +46,8 @@ jobs:
 
         docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
-          -e MODULES=_MODULES_*Native*Multiplayer*_MODULES_ \
-          -e TICK_RATE=240 \
+          -e MODULES=${{ secrets.MODULES }} \
+          -e TICK_RATE=${{ secrets.TICK_RATE }} \
           -p 7210:7210/tcp \
           -p 7210:7210/udp \
           ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
