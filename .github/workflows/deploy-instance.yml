@@ -44,9 +44,9 @@ jobs:
         
         echo "Starting new Docker container..."
 
-        echo ${{ secrets.MODULES }}
-        echo ${{ secrets.TICK_RATE }}
-        
+        echo "${{ secrets.MODULES }}"
+        echo "${{ secrets.TICK_RATE }}"
+
         docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
           -e MODULES=${{ secrets.MODULES }} \
