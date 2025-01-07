@@ -14,7 +14,7 @@ Installation Links:
 
 #### 🔧 Build Docker Image
 ```
-docker build -t tssl_bl_srv .`
+docker build -t tssl_bl_srv .
 ```
 
 #### 🚀 Run Docker Image
