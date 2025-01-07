@@ -85,7 +85,7 @@ EXPOSE 7210/udp
 CMD [ \
     "dotnet", \
     "TaleWorlds.Starter.DotNetCore.Linux.dll", \
-    "$MODULES"", \
+    "$MODULES", \
     "/dedicatedcustomserverconfigfile", \
     "../../Modules/Native/tssl_training.txt", \
     "/tickrate", \
