@@ -10,6 +10,15 @@ on:
         description: "🏷️ Docker image version (DEFAULT latest)"
         required: true
         default: "latest"
+      modules-str:
+        description: "📦 Modules Startup Command (Default _MODULES_*Native*Multiplayer*_MODULES_)"
+        required: true
+        default: "_MODULES_*Native*Multiplayer*_MODULES_"
+      tick-rate:
+        description: "🕔 Tickrate (Default 60)"
+        required: true
+        type: number
+        default: 60
 
 jobs:
   pull-and-deploy:
@@ -49,8 +58,8 @@ jobs:
 
         docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
-          -e MODULES=${{ secrets.MODULES }} \
-          -e TICK_RATE=${{ secrets.TICK_RATE }} \
+          -e MODULES=${{ inputs.modules-str }} \
+          -e TICK_RATE=${{ inputs.tick-rate }} \
           -p 7210:7210/tcp \
           -p 7210:7210/udp \
           ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
