@@ -128,7 +128,11 @@ Create `modules/` directory in project on root level.
 .etc/
 .github/
 config/
-modules/ <<-- your modules is placed here
+modules/ <<-- Your modules should be placed here.
+CODEOWNERS
+dockerfile
+LICENSE
+readme.md
 ```
 
 Anything placed in the `modules/` directory will be copied to the Modules/` directory in **[Docker Container](https://www.docker.com/resources/what-container/)**. This includes custom scripts, assets, configurations, or even new modules.
