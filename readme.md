@@ -13,7 +13,9 @@ Installation Links:
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
 #### 🔧 Build Docker Image
-`docker build -t tssl_bl_srv .`
+```
+docker build -t tssl_bl_srv .`
+```
 
 #### 🚀 Run Docker Image
 ```
