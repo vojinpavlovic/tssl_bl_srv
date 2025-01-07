@@ -6,7 +6,7 @@ on:
       environment:
         description: "♻️ Environment Configuration Key"
         required: true
-      docker_image_version:
+      docker-image-version:
         description: "🏷️ Docker image version (DEFAULT latest)"
         required: true
         default: "latest"
@@ -36,6 +36,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker_image_version }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
         cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:buildcache
         cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:buildcache,mode=max
