@@ -73,8 +73,8 @@ RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLOR
 COPY /config/server.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
 
 # Copy the map files from the host to the container
-#COPY modules/ ${BANNERLORDDIR}/Modules/
-COPY modules/Multiplayer/SceneObj/tssl_sample_map ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/ 
+COPY modules/ ${BANNERLORDDIR}/Modules/
+#COPY modules/Multiplayer/SceneObj/tssl_sample_map ${BANNERLORDDIR}/Modules/Multiplayer/SceneObj/ 
 
 # Expose TCP port 7210
 EXPOSE 7210/tcp
