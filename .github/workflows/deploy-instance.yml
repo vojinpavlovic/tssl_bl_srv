@@ -42,10 +42,6 @@ jobs:
         docker stop ${{ inputs.configuration-id }} || true
         docker rm ${{ inputs.configuration-id }} || true
         
-        echo "Preparing enviornments"
-        echo "MODULES=${{ secrets.MODULES || '_MODULES_*Native*Multiplayer*_MODULES_' }}" >> $GITHUB_ENV
-        echo "TICK_RATE=${{ secrets.TICK_RATE || '60' }}" >> $GITHUB_ENV
-
         echo "Starting new Docker container..."
         docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
