@@ -43,6 +43,7 @@ jobs:
         docker rm ${{ inputs.configuration-id }} || true
         
         echo "Starting new Docker container..."
+        
         docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
           -e MODULES=_MODULES_*Native*Multiplayer*_MODULES_ \
