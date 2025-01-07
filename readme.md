@@ -56,6 +56,7 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
     - ✔️ `Required:` true
     - ✏️ `Default Value:` latest
     - 📙 `Description:` Uploading new build to the Docker Image Version e.g `stable` (production ready) version instead of `latest` (experimental)
+    
 
 
 ### [🚀 Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
@@ -68,11 +69,16 @@ Deploys a container on the Training Server (remote server) using the latest imag
     - ✔️ `Required:` true
     - ✏️ `Default Value:` none (must be existing)
     - 📙 `Description:` Github Enviornment repository name for deployment  
-2. ✍️ **Docker Image Version**
+2. ✍️ **Module Startup Command**
     - 🏷️ `Type:` string
     - ✔️ `Required:` true
-    - ✏️ `Default Value:` latest
-    - 📙 `Description:` Version you previously build e.g `stable` (production ready) version instead of `latest` (experimental)
+    - ✏️ `Default Value:` `_MODULES_*Native*Multiplayer*_MODULES_`
+    - 📙 `Description:` Module list that Bannerlord Server will run.
+2. ✍️ **Tick Rate**
+    - 🏷️ `Type:` number
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` 60
+    - 📙 `Description:` A higher tickrate means more updates per second for the clients
 
 ### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
 Run an action upon server container using SSH and Docker. The available actions are START,RESTART,STOP,DELETE in workflow.
@@ -83,17 +89,17 @@ Run an action upon server container using SSH and Docker. The available actions 
     - 🏷️ `Type:` string
     - ✔️ `Required:` true
     - ✏️ `Default Value:` none (must be existing)
-    - 📙 `Description:` Github Enviornment repository name for deployment  
+    - 📙 `Description:` Github Enviornment repository name for deployment.
 2. ✍️ **🎬 Remote Server Action for Server Instance**
     - 🏷️ `Type:` choice
     - ✔️ `Required:` true
     - ✏️ `Default Value:` START
     - ☰  `Options`: 
-        - START
-        - RESTART
-        - STOP
-        - DELETE
-    - 📙 `Description:` Choose an action to run upon Remote Server using Docker
+        - START `docker start`
+        - RESTART `docker restart`
+        - STOP `docker stop`
+        - DELETE `docker delete, docker rm`
+    - 📙 `Description:` Choose an action to run upon Remote Server using Docker if container found.
 
 ---
 
@@ -103,21 +109,16 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 
 ![Secret Repository Example](.etc/readme-assets/secret-repository.png)
 
-- **DOCKER_USERNAME**: `Account Username from Docker Hub.`
-- **DOCKER_PASSWORD**: `Account Password from Docker Hub.`
-- **DOCKER_REPOSITORY**: `Repository from Docker Hub for Bannerlord Server`
-- **SERVER_IPV4**: `Server IP address for deployment`
-- **SERVER_USER**: `The server user for deployments with docker execute permissions`
-- **SERVER_SSH_KEY**: `The user SSH key for server access`
-- **SERVER_PORT**: `Exposed Container port to the Public`
-- **TW_TOKEN**: `Generated Taleworld Server Token using Server Commands`
+- `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets are used for [Docker Hub](https://docs.docker.com/docker-hub/quickstart/) (Account) access so it can push or pull docker images.
+- `DOCKER_REPOSITORY` [Docker Hub Repository](https://docs.docker.com/docker-hub/repos/) for storing images and it's build cache. 
+- `SERVER_IPV4` [Public IP Address](https://wiki.teltonika-networks.com/view/Private_and_Public_IP_Addresses#:~:text=Public%20static%20-%20some%20times%20called,%2C%20device%2C%20server%20or%20website.) of your remote server where you want to deploy your Docker Image
+- `SERVER_PORT` [Port](https://www.techtarget.com/searchnetworking/definition/port-number) of your Bannerlord Server that clients will listen to. Default value for Bannerlord Server by Taleworld is **7210**
+- `SERVER_USER` [User](https://www.freecodecamp.org/news/how-to-manage-users-in-linux/) on remote server with ability to run Docker commands
+- `SERVER_SSH_KEY` [SSH Key-Based Authentication on a Linux Server](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server) 
+- `TW_TOKEN` In Multiplayer Bannerlord `press Alt+~` then type `customserver.gettoken`. 
+    - This should generate token in `C:\Users\Your User\Documents\Mount and Blade II Bannerlord\Tokens\DedicatedCustomServerAuthToken`
 
-Beside secrets we have configurable variables called Enviornment variables.
-
-![Enviornment Variables Example](.etc/readme-assets/enviornment-variables.png)
-
-- **TICK_RATE**: `A higher tickrate means more updates per second for the clients`
-- **MODULES**: `If you want to enable your custom module, use MODULES enviornment variable, it only includes Multiplayer by default, but can be overriden using MODULES enviornment variable in deployment workflow`.
+---
 
 ## 🧾 License
 
