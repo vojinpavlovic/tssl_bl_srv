@@ -46,8 +46,8 @@ jobs:
 
         docker run -d --name ${{ inputs.configuration-id }} \
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
-          -e MODULES=${{ env.MODULES }} \
-          -e TICK_RATE=${{ env.TICK_RATE }} \
+          -e MODULES=${{ secrets.MODULES }} \
+          -e TICK_RATE=${{ secrets.TICK_RATE }} \
           -p 7210:7210/tcp \
           -p 7210:7210/udp \
           ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
