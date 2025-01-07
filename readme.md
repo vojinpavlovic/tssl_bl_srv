@@ -122,6 +122,15 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 
 ## 📁 Adding Custom Modules
 
+Create `modules/` directory in project on root level.
+
+```
+.etc/
+.github/
+config/
+modules/ <<-- your modules is placed here
+```
+
 Anything placed in the `modules/` directory will be copied to the Modules/` directory in **[Docker Container](https://www.docker.com/resources/what-container/)**. This includes custom scripts, assets, configurations, or even new modules.
 
 If any files in your `local modules/` directory match files already present in the `server’s Modules/` directory, they will be replaced by the `local files`.
