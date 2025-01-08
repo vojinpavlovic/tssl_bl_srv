@@ -35,8 +35,11 @@ docker build -t tssl_bl_srv .
 
  You can use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https://hub.docker.com) these images can be deployed to a remote server. 
 
-In order to enable workflow, it is required to setup secrets. To find more informations visit 
-`🔐 Github Stored Secrets` section.
+To enable workflow, it is required to setup enviornment and it's secret for deploymenet. To find more informations visit `🔐 Github Stored Secrets` section.
+
+Workflows actions so far have been **only** **tested** on **Remote Server** with `Debian GNU/Linux 12 (bookworm)` installed.
+
+You must have linux with Docker pre-installed on Remote Server and an linux user with permissions to run `docker` command. Please do not use `root`. The large part of Linux ecosystem is designed to be run as a limited user, not as root. Running applications as root is very insecure and it can lead you to break your entire system without warning if you're not careful.
 
 ---
 
