@@ -3,19 +3,9 @@ name: 🕹️ Instance actions on Remote Server
 on:
     workflow_dispatch:
       inputs:
-        get-secret-from-environment:
-          description: "Get Secret from Environment instead? (Default NO)"
-          required: true
-          type: choice
-          options:
-            - "YES"
-            - "NO"
-          default: "NO"
-        
         configuration-id:
           description: "♻️ Environment Configuration Name"
-          required: false
-
+          required: true
         instance-action:
           description: "🎬 Remote Server Action for Server Instance"
           type: choice
@@ -30,8 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: ${{ inputs.configuration-id || 'default' }}
-
+      name: ${{ inputs.configuration-id }}
 
     steps:
       - name: Set up SSH
