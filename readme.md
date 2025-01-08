@@ -132,9 +132,9 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 
 ---
 
-## 📁 Adding Custom Modules
+## 📁 Adding Server Files
 
-Create `modules/` directory in project on root level.
+Use `modules/` directory in project on root level.
 
 ```
 .etc/
