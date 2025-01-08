@@ -65,7 +65,7 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
 
 
 ### [🚀 Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
-Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
+Deploys a container on the Remote Server using the latest image from Docker Hub.
 
 ![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg)
 
