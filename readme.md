@@ -155,8 +155,9 @@ readme.md
 
 If **any file** in your `local modules/` directory **match file** already present in the `server’s Modules/` directory, they will be replaced by the `local files`.
 
-If you want to add **custom maps** for the **Multiplayer Game Type**, you would place them in the following directory `modules/Multiplayer/SceneObj/some_map/`. 
+If you want to add **custom maps** for the **Multiplayer Game Type**, you would place them in the following directory `modules/Multiplayer/SceneObj/some_map/`.
 - This **ensures** that only the map files are **modified** while the **rest** of the **Native** and **Multiplayer** module files **remains untouched**.
+- **Do not forget** to **include** your map in **server configuration**.
 
 ---
 
