@@ -3,9 +3,21 @@ name: 🕹️ Instance actions on Remote Server
 on:
     workflow_dispatch:
       inputs:
+        get-secret-from-environment:
+          description: "Get Secret from Environment instead? (Default NO)"
+          required: true
+          type: choice
+          options:
+            - "YES"
+            - "NO"
+          default: "NO"
+
         configuration-id:
           description: "♻️ Environment Configuration Name"
           required: true
+          # Only show this when 'get-secret-from-environment' is set to 'NO'
+          if: ${{ inputs.get-secret-from-environment == 'NO' }}
+
         instance-action:
           description: "🎬 Remote Server Action for Server Instance"
           type: choice
