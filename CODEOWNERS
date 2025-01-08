@@ -1,1 +1,8 @@
+# Owner of the repository
 * @vojinpavlovic
+
+# Docs team, responsible for everything in the 'docs' directory
+/docs/ @vojinpavlovic
+
+# Specific file ownership:
+README.md @vojinpavlovic
