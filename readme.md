@@ -56,7 +56,7 @@ Workflows are stored in the `.github/workflows directory`. A repository can have
 - Control Docker Containers on Remote Server
 - Configure by enviornment or in default enviornment
 
-**For more informations please read [Workflow Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/docs/workflows.md)**
+**For more informations please read [Workflow Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/workflows.md)**
 
 ---
 
@@ -64,7 +64,7 @@ Workflows are stored in the `.github/workflows directory`. A repository can have
 
 Secrets are variables that you create in an organization, repository, or repository environment. The secrets that you create are available to use in GitHub Actions workflows. GitHub Actions can only read a secret if you explicitly include the secret in a workflow.
 
-**For more informations please read [Secrets Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/docs/secrets.md)**
+**For more informations please read [Secrets Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/secrets.md)**
 
 ---
 
@@ -72,7 +72,7 @@ Secrets are variables that you create in an organization, repository, or reposit
 
 Anything **placed** in the `modules/` directory will be copied to the `Modules/` directory in **[Docker Container](https://www.docker.com/resources/what-container/)**. This includes custom **scripts**, **assets**, **configurations**, or even **new modules**.
 
-**For more informations please read [Server Files Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/docs/secrets.md)**
+**For more informations please read [Server Files Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/server-files.md)**
 
 ---
 
