@@ -7,7 +7,7 @@ on:
         description: "♻️ Environment Configuration Key"
         required: true
       docker-image-version:
-        description: "🏷️ Docker image version (DEFAULT latest)"
+        description: "🏷️ Docker image version"
         required: true
         default: "latest"
 

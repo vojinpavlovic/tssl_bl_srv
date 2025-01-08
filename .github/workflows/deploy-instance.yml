@@ -7,19 +7,19 @@ on:
         description: "♻️ Environment Configuration Id"
         required: true
       docker-image-version:
-        description: "🏷️ Docker image version (DEFAULT latest)"
+        description: "🏷️ Docker image version"
         required: true
         default: "latest"
       server-cfg:
-        description: "⚙️ Server Configuration (default server)"
+        description: "⚙️ Server Configuration Path"
         required: true 
-        default: "server"
+        default: "Native/server.txt"
       modules-str:
-        description: "📦 Modules Startup Command (Default _MODULES_*Native*Multiplayer*_MODULES_)"
+        description: "📦 Modules Startup Command"
         required: true
         default: "_MODULES_*Native*Multiplayer*_MODULES_"
       tick-rate:
-        description: "🕔 Tickrate (Default 60)"
+        description: "🕔 Tickrate"
         required: true
         type: number
         default: 60
