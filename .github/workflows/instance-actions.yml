@@ -1,4 +1,4 @@
-name: 🕹️ Instance actions on Remote Server
+name: 🕹️ Instance actions on Dedicated Server
 
 on:
     workflow_dispatch:
@@ -7,7 +7,7 @@ on:
           description: "♻️ Environment Configuration Name"
           required: true
         instance-action:
-          description: "🎬 Remote Server Action for Server Instance"
+          description: "🎬 Dedicated Server Action for Server Instance"
           type: choice
           options:
             - START
@@ -30,7 +30,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_IPV4 }} >> ~/.ssh/known_hosts
   
-      - name: Perform Instance Action on Remote Server
+      - name: Perform Instance Action on Dedicated Server
         run: |
           ssh -T -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IPV4 }} << EOF
           # Disable 'set -e' for more control

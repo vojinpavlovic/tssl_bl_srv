@@ -1,4 +1,4 @@
-name: 🚀 Deploy to Remote Server
+name: 🚀 Deploy to Dedicated Server
 
 on:
   workflow_dispatch:
@@ -45,6 +45,6 @@ jobs:
       run: |
         ./ssh-prepare.sh ${{ secrets.SERVER_SSH_KEY }} ${{ secrets.SERVER_IPV4 }}
 
-    - name: Deploy on Remote Server
+    - name: Deploy on Dedicated Server
       run: |
         ./deploy-instance.sh

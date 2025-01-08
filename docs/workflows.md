@@ -20,10 +20,10 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
     
 
 
-### [🚀 Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
-Deploys a container on the Remote Server using the latest image from Docker Hub.
+### [🚀 Deploy to Dedicated Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
+Deploys a container on the Dedicated Server using the latest image from Docker Hub.
 
-![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg)
+![Deploy To Dedicated Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg)
 
 #### 🪶 Arguments
 
@@ -48,10 +48,10 @@ Deploys a container on the Remote Server using the latest image from Docker Hub.
     - ✏️ `Default Value:` 60
     - 📙 `Description:` A higher tickrate means more updates per second for the clients
 
-### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
+### [🕹️ Instance actions on Dedicated Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
 Run an action upon server container using SSH and Docker. The available actions are **`START | RESTART | STOP | DELETE`** in workflow.
 
-![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
+![Instance actions on Dedicated Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
 
 
 #### 🪶 Arguments
@@ -61,7 +61,7 @@ Run an action upon server container using SSH and Docker. The available actions 
     - ✔️ `Required:` true
     - ✏️ `Default Value:` none (must be existing)
     - 📙 `Description:` Github Enviornment repository name for deployment.
-2. ✍️ **🎬 Remote Server Action for Server Instance**
+2. ✍️ **🎬 Dedicated Server Action for Server Instance**
     - 🏷️ `Type:` choice
     - ✔️ `Required:` true
     - ✏️ `Default Value:` START
@@ -70,4 +70,4 @@ Run an action upon server container using SSH and Docker. The available actions 
         - RESTART `docker restart`
         - STOP `docker stop`
         - DELETE `docker delete, docker rm`
-    - 📙 `Description:` Choose an action to run upon Remote Server using Docker if container found.
+    - 📙 `Description:` Choose an action to run upon Dedicated Server using Docker if container found.

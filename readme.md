@@ -37,19 +37,18 @@ docker build -t tssl_bl_srv .
     tssl_bl_srv
 ```
 
-####  ⚙️ Variables:
-- `TW_TOKEN="Your Taleworld Server Token"`
-    - This variable sets your Taleworld server token, which is required to authenticate and connect to the Taleworld multiplayer system. Replace "Your Taleworld Server Token" with your actual server token.
+#####  ⚙️ Enviornment Variables:
+- `-e TW_TOKEN="Your Taleworld Server Token"`
+    - Sets your Taleworld server token required for authentication on Taleworld API. Replace value with generated and valid token.
 
-- `MODULES="_MODULES_*Native*Multiplayer*_MODULES_"`
-    - This variable defines the modules that will be loaded into the server. By default it loads "Native" and "Multiplayer" modules. You can customize this to include other modules.
+- `-e MODULES="_MODULES_*Native*Multiplayer*_MODULES_"`
+    - Defines the modules that will be loaded upon run. You can customize this to include other modules.
 
-- `TICK_RATE=60`
+- `-e TICK_RATE=60`
     - This variable controls the game's tick rate, which affects how often the game logic is updated. 
 
-- `SERVER_CFG="Native/server"`
-    - This variable specifies the server configuration to use. It points to the default "Native" configuration. You can customize this to load a different configuration from or a path.
-
+- `-e SERVER_CFG="Native/server.txt"`
+    - This variable specifies the server configuration path from `Module/` directory inside container.
 
 For more informations about Taleworld Token, check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
 
@@ -57,24 +56,24 @@ For more informations about Custom Modules, check out [Taleworld - Custom Game M
 
 ##### 👉 Note: 
 
-You can use [Github Actions](https://docs.github.com/en/actions) tostreamline the process of building images for to [Docker Hub](https:/hub.docker.com) these images can be deployed to a remote server. 
+You can use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https:/hub.docker.com) these images can be deployed to a Dedicated Server. 
 
-Workflows actions so far have been **only** **tested** on **Remote Server** with `Debian GNU/Linux 12 (bookworm)` installed.
+- ! Workflows actions so far have been **only** **tested** on **Dedicated Sever** with `Debian GNU/Linux 12 (bookworm)` installed.
 
-You must have linux with Docker pre-installed on Remote Server and an linux user with permissions to run `docker` command. 
+You must have linux with Docker pre-installed on Dedicated Server and an linux user with permissions to run `docker` command. 
 - ! Do not use `root` access. The large part of Linux ecosystem is designed to be run as a limited user, not as root. Running applications as root is very insecure and it can lead you to break your entire system without warning if you're not careful.
 
 ---
 
 ## 🚀 Worfklows
 
-![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg) ![Build Image to Docker Hub Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/build-image.yml/badge.svg) ![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
+![Deploy To Dedicated Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg) ![Build Image to Docker Hub Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/build-image.yml/badge.svg) ![Instance actions on Dedicated Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
 
 A workflow is a **configurable, automated process** defined by a **YAML file** in your repository, workflows can be triggered by repository manually.
 
 Workflows are **stored** in the `.github/workflows directory`. A repository can **have multiple** workflows, each performing tasks, such as:
 - **Building** and **Deploying** Docker Images
-- **Control** Docker Containers on Remote Server
+- **Control** Docker Containers on Dedicated Server
 - **Configure** by enviornment or in default enviornment
 
 **For more informations please read [Workflow Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/workflows.md)**
