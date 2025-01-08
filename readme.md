@@ -44,6 +44,8 @@ In order to enable workflow, it is required to setup secrets. To find more infor
 ### [📦 Build Image to Docker Hub](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
+![Build Image to Docker Hub Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/build-image.yml/badge.svg)
+
 #### 🪶 Arguments
 
 1. ✍️ **♻️ Enviornment Configuration Key**
@@ -61,6 +63,8 @@ Builds the latest Docker image from the [dockerfile](https://github.com/vojinpav
 
 ### [🚀 Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
 Deploys a container on the Training Server (remote server) using the latest image from Docker Hub.
+
+![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg)
 
 #### 🪶 Arguments
 
@@ -87,6 +91,9 @@ Deploys a container on the Training Server (remote server) using the latest imag
 
 ### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
 Run an action upon server container using SSH and Docker. The available actions are START,RESTART,STOP,DELETE in workflow.
+
+![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
+
 
 #### 🪶 Arguments
 
@@ -122,11 +129,6 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 - `SERVER_SSH_KEY` [SSH Key-Based Authentication on a Linux Server](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server) 
 - `TW_TOKEN` In Multiplayer Bannerlord `press Alt+~` then type `customserver.gettoken`. 
     - This should generate token in `C:\Users\Your User\Documents\Mount and Blade II Bannerlord\Tokens\DedicatedCustomServerAuthToken`
-
----
-
-## ⚙️ Server Configuration
-- In progress..
 
 ---
 
