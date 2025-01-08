@@ -25,7 +25,7 @@ docker build -t tssl_bl_srv .
     -e TW_TOKEN="Your Taleworld Server Token" \
     -e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
     -e TICK_RATE=60 \
-    -e SERVER_CFG="server" \
+    -e SERVER_CFG="Native/server" \
     -p 7210:7210/tcp
     -p 7210:7210/udp
     tssl_bl_srv
