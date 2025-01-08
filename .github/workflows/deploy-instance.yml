@@ -43,7 +43,7 @@ jobs:
 
     - name: Set up SSH
       run: |
-        ./ssh-prepare.sh
+        ./ssh-prepare.sh ${{ secrets.SERVER_SSH_KEY }} ${{ secrets.SERVER_IPV4 }}
 
     - name: Deploy on Remote Server
       run: |
