@@ -41,9 +41,59 @@ jobs:
     - name: Make the script files executable
       run: chmod +x ./ssh-prepare.sh ./deploy-instance.sh
 
+name: 🚀 Deploy to Remote Server
+
+on:
+  workflow_dispatch:
+    inputs:
+      configuration-id:
+        description: "♻️ Environment Configuration Id"
+        required: true
+      docker-image-version:
+        description: "🏷️ Docker image version"
+        required: true
+        default: "latest"
+      server-cfg:
+        description: "⚙️ Server Configuration Path"
+        required: true 
+        default: "Native/server.txt"
+      modules-str:
+        description: "📦 Modules Startup Command"
+        required: true
+        default: "_MODULES_*Native*Multiplayer*_MODULES_"
+      tick-rate:
+        description: "🕔 Tickrate"
+        required: true
+        type: number
+        default: 60
+
+jobs:
+  pull-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
+
+    environment:
+      name: ${{ inputs.configuration-id }}
+
+    steps:
+    - name: Check out the repository to the runner
+      uses: actions/checkout@v4  
+
+    - name: Make the script files executable
+      run: chmod +x ./scripts/ssh-prepare.sh ./scripts/deploy-instance.sh
+
     - name: Set up SSH
       run: |
-        ./ssh-prepare.sh
+        export SERVER_SSH_KEY="${{ secrets.SERVER_SSH_KEY }}"
+        export SERVER_IPV4="${{ secrets.SERVER_IPV4 }}"
+        ./scripts/ssh-prepare.sh
+
+    - name: Deploy on Remote Server
+      run: |
+        ./scripts/deploy-instance.sh
+
 
     - name: Deploy on Remote Server
       run: |
