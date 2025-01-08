@@ -1,23 +1,25 @@
 # ☀ TSSL Bannerlord Server
-TSSL is a dockerized Bannerlord server setup that allows you to quickly deploy a dedicated server. This guide provides instructions for setting up the server manually, as well as automating the build and deployment process using GitHub Actions and Docker.
+
+TSSL is a **dockerized** **Bannerlord server** setup that allows you to **quickly deploy** to Remote (Dedicated) server. This guide provides instructions for setting up the server manually, as well as automating the build and deployment process using **GitHub Actions** and **Docker**.
 
 ---
 
 ## 🚀 Get Started
 
-#### 📥 Install Docker
+##### 📥 Install Docker
  Docker is a platform for creating, deploying, and managing lightweight, portable containers for applications. It simplifies development by packaging code and dependencies into isolated environments that work seamlessly across different systems.
 
 Installation Links:
 - [Linux Debian](https://docs.docker.com/engine/install/debian/)
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) 
 
-#### 🔧 Build Docker Image
+
+##### 🔧 Build Docker Image
 ```
 docker build -t tssl_bl_srv .
 ```
 
-#### 🚀 Run Docker Image
+##### 🚀 Run Docker Image
 ```
     docker run -d --name tssl_bl_srv \
     -e TW_TOKEN="Your Taleworld Server Token" \
@@ -33,7 +35,7 @@ docker build -t tssl_bl_srv .
 
 - For more informations about Custom Modules, check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
 
-#### 👉 Note: 
+##### 👉 Note: 
 
 You can use [Github Actions](https://docs.github.com/en/actions) tostreamline the process of building images for to [Docker Hub](https:/hub.docker.com) these images can be deployed to a remote server. 
 
@@ -48,12 +50,12 @@ You must have linux with Docker pre-installed on Remote Server and an linux user
 
 ![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg) ![Build Image to Docker Hub Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/build-image.yml/badge.svg) ![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
 
-A workflow is a configurable, automated process that runs one or more jobs. Defined by a YAML file in your repository, workflows can be triggered by repository events, manually, or on a defined schedule.
+A workflow is a **configurable, automated process** defined by a **YAML file** in your repository, workflows can be triggered by repository manually.
 
-Workflows are stored in the `.github/workflows directory`. A repository can have multiple workflows, each performing tasks, such as:
-- Building and Deploying Docker Images
-- Control Docker Containers on Remote Server
-- Configure by enviornment or in default enviornment
+Workflows are **stored** in the `.github/workflows directory`. A repository can **have multiple** workflows, each performing tasks, such as:
+- **Building** and **Deploying** Docker Images
+- **Control** Docker Containers on Remote Server
+- **Configure** by enviornment or in default enviornment
 
 **For more informations please read [Workflow Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/workflows.md)**
 
