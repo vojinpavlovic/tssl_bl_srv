@@ -27,6 +27,9 @@ on:
 jobs:
   pull-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
 
     environment:
       name: ${{ inputs.configuration-id }}
@@ -36,12 +39,12 @@ jobs:
       uses: actions/checkout@v4  
 
     - name: Make the script files executable
-      run: chmod +x scripts/ssh-prepare.sh scripts/deploy-instance.sh
+      run: chmod +x ./ssh-prepare.sh ./deploy-instance.sh
 
     - name: Set up SSH
       run: |
-        ./scripts/ssh-prepare.sh
+        ./ssh-prepare.sh
 
     - name: Deploy on Remote Server
       run: |
-        ./scripts/deploy-instance.sh
+        ./deploy-instance.sh
