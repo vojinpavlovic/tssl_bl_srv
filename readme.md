@@ -3,9 +3,9 @@
 TSSL is a **dockerized** **Bannerlord server** setup that allows you to **quickly deploy** to Dedicated server. This guide provides instructions for setting up the server manually, as well as automating the build and deployment process using **GitHub Actions** and **Docker**.
 
 #### Features:
-- **Building** and **Deploying** [Bannerlord Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/) using [Docker](https://docker.com), [Docker Hub](https://hub.docker.com) and [Github Actions](https://github.com/features/actions)
-- **Control** server instance and manage [Docker Container](https://www.docker.com/resources/what-container/).
-- [Github Workflows](https://docs.github.com/en/actions/writing-workflows/about-workflows) for deployment and [Enviornments for Deployment secrets](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) as a **Secret Vault**. 
+- **Building** and **Deploying** [Bannerlord Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/) on **Dedicated Server** using [Docker](https://docker.com), [Docker Hub](https://hub.docker.com) and [Github Actions](https://github.com/features/actions)
+- **Control** server instance and manage [Docker Container](https://www.docker.com/resources/what-container/) on **Dedicated Server**.
+- [Enviornments for Deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) as a **Secret Vault**. 
 
 
 ---
