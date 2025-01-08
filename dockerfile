@@ -70,7 +70,8 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
-COPY /config/ ${BANNERLORDDIR}/Modules/Native/
+
+#COPY /config/ ${BANNERLORDDIR}/Modules/Native/
 
 # Copy the map files from the host to the container
 COPY modules/ ${BANNERLORDDIR}/Modules/
