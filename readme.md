@@ -93,7 +93,7 @@ Deploys a container on the Remote Server using the latest image from Docker Hub.
     - 📙 `Description:` A higher tickrate means more updates per second for the clients
 
 ### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
-Run an action upon server container using SSH and Docker. The available actions are **START,RESTART,STOP,DELETE** in workflow.
+Run an action upon server container using SSH and Docker. The available actions are **`START | RESTART | STOP | DELETE`** in workflow.
 
 ![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
 
