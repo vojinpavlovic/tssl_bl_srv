@@ -46,94 +46,25 @@ You must have linux with Docker pre-installed on Remote Server and an linux user
 ---
 
 ## 🚀 Worfklows
-### [📦 Build Image to Docker Hub](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
-Builds the latest Docker image from the [dockerfile](https://github.com/vojinpavlovic/tssl/blob/main/dockerfile) and pushes it to Docker Hub
 
-![Build Image to Docker Hub Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/build-image.yml/badge.svg)
+![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg) ![Build Image to Docker Hub Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/build-image.yml/badge.svg) ![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
 
-#### 🪶 Arguments
+A workflow is a configurable, automated process that runs one or more jobs. Defined by a YAML file in your repository, workflows can be triggered by repository events, manually, or on a defined schedule.
 
-1. ✍️ **♻️ Enviornment Configuration Key**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` none (must be existing)
-    - 📙 `Description:` Github Enviornment repository name for deployment  
-2. ✍️ **Docker Image Version**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` latest
-    - 📙 `Description:` Uploading new build to the Docker Image Version e.g `stable` (production ready) version instead of `latest` (experimental)
-    
+Workflows are stored in the `.github/workflows directory`. A repository can have multiple workflows, each performing tasks, such as:
+- Building and Deploying Docker Images
+- Control Docker Containers on Remote Server
+- Configure by enviornment or in default enviornment
 
-
-### [🚀 Deploy to Remote Server](https://github.com/vojinpavlovic/tssl/actions/workflows/deploy.yml)
-Deploys a container on the Remote Server using the latest image from Docker Hub.
-
-![Deploy To Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/deploy-instance.yml/badge.svg)
-
-#### 🪶 Arguments
-
-1. ✍️ **♻️ Enviornment Configuration Key**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` none 
-    - 📙 `Description:` Github Enviornment repository name for deployment  
-2. ✍️ **⚙️ Server Configuration**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` server.txt
-    - 📙 `Description:` Server Configuration file for Container Deployment 
-3. ✍️ **Module Startup Command**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` `_MODULES_*Native*Multiplayer*_MODULES_`
-    - 📙 `Description:` Module list that Bannerlord Server will run.
-4. ✍️ **Tick Rate**
-    - 🏷️ `Type:` number
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` 60
-    - 📙 `Description:` A higher tickrate means more updates per second for the clients
-
-### [🕹️ Instance actions on Remote Server](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml)
-Run an action upon server container using SSH and Docker. The available actions are **`START | RESTART | STOP | DELETE`** in workflow.
-
-![Instance actions on Remote Server Deployment Badge](https://github.com/vojinpavlovic/tssl_bl_srv/actions/workflows/instance-actions.yml/badge.svg)
-
-
-#### 🪶 Arguments
-
-1. ✍️ **♻️ Enviornment Configuration Key**
-    - 🏷️ `Type:` string
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` none (must be existing)
-    - 📙 `Description:` Github Enviornment repository name for deployment.
-2. ✍️ **🎬 Remote Server Action for Server Instance**
-    - 🏷️ `Type:` choice
-    - ✔️ `Required:` true
-    - ✏️ `Default Value:` START
-    - ☰  `Options`: 
-        - START `docker start`
-        - RESTART `docker restart`
-        - STOP `docker stop`
-        - DELETE `docker delete, docker rm`
-    - 📙 `Description:` Choose an action to run upon Remote Server using Docker if container found.
+**For more informations please read [Workflow Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/docs/workflows.md)**
 
 ---
 
 ## 🔐 Github Stored Secrets
 
-Secrets are managed by [Environments for deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) on GitHub.
+Secrets are variables that you create in an organization, repository, or repository environment. The secrets that you create are available to use in GitHub Actions workflows. GitHub Actions can only read a secret if you explicitly include the secret in a workflow.
 
-![Secret Repository Example](.etc/readme-assets/secret-repository.png)
-
-- `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets are used for [Docker Hub](https://docs.docker.com/docker-hub/quickstart/) (Account) access so it can push or pull docker images.
-- `DOCKER_REPOSITORY` [Docker Hub Repository](https://docs.docker.com/docker-hub/repos/) for storing images and it's build cache. 
-- `SERVER_IPV4` [Public IP Address](https://wiki.teltonika-networks.com/view/Private_and_Public_IP_Addresses#:~:text=Public%20static%20-%20some%20times%20called,%2C%20device%2C%20server%20or%20website.) of your remote server where you want to deploy your Docker Image
-- `SERVER_PORT` [Port](https://www.techtarget.com/searchnetworking/definition/port-number) of your Bannerlord Server that clients will listen to. Default value for Bannerlord Server by Taleworld is **7210**
-- `SERVER_USER` [User](https://www.freecodecamp.org/news/how-to-manage-users-in-linux/) on remote server with ability to run Docker commands
-- `SERVER_SSH_KEY` [SSH Key-Based Authentication on a Linux Server](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server) 
-- `TW_TOKEN` In Multiplayer Bannerlord `press Alt+~` then type `customserver.gettoken`. 
-    - This should generate token in `C:\Users\Your User\Documents\Mount and Blade II Bannerlord\Tokens\DedicatedCustomServerAuthToken`
+**For more informations please read [Secrets Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/docs/secrets.md)**
 
 ---
 
@@ -141,27 +72,8 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 
 Anything **placed** in the `modules/` directory will be copied to the `Modules/` directory in **[Docker Container](https://www.docker.com/resources/what-container/)**. This includes custom **scripts**, **assets**, **configurations**, or even **new modules**.
 
-##### Folder Structure:
-```
-.etc/
-.github/
-config/
-modules/ <<-- Your modules should be placed here.
-CODEOWNERS
-dockerfile
-LICENSE
-readme.md
-```
+**For more informations please read [Server Files Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/docs/secrets.md)**
 
----
-
-##### 👉 Note: Adding Your files without overriding Native/Multiplayer modules.
-
-If **any file** in your `local modules/` directory **match file** already present in the `server’s Modules/` directory, they will be replaced by the `local files`.
-
-If you want to add **custom maps** for the **Multiplayer Game Type**, you would place them in the following directory `modules/Multiplayer/SceneObj/some_map/`.
-- This **ensures** that only the map files are **modified** while the **rest** of the **Native** and **Multiplayer** module files **remains untouched**.
-- **Do not forget** to **include** your map in **server configuration**.
 ---
 
 This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/LICENSE) file for more details.
