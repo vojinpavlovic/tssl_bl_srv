@@ -23,12 +23,14 @@ docker build -t tssl_bl_srv .
     -e TW_TOKEN="Your Taleworld Server Token" \
     -e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
     -e TICK_RATE=60 \
+    -e SERVER_CFG="server" \
     -p 7210:7210/tcp
     -p 7210:7210/udp
     tssl_bl_srv
 ```
 
 - For more informations about Taleworld Token, check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
+
 - For more informations about Custom Modules, check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
 
 #### 👉 Note: 
@@ -158,8 +160,5 @@ If you **want to add** custom maps for the Multiplayer mode, you would place the
 
 ---
 
-## 🧾 License
 
-This project is licensed under the **MIT** License. 
-
-See the [LICENSE](https://github.com/vojinpavlovic/tssl/blob/main/LICENSE) file for more details.
+This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/LICENSE) file for more details.
