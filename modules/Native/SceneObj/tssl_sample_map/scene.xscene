@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<scene name="burried_playground" version="2" unique_token="{3381F2D2-1831-4592-B902-F7D0E38FE28E}" revision="1736365501919" id_automatic="true">
+<scene name="tssl_sample_map" version="2" unique_token="{3381F2D2-1831-4592-B902-F7D0E38FE28E}" revision="1736365708151" id_automatic="true">
 	<flora_bounding_rect min="0.000, 0.000" max="400.000, 400.000"/>
 	<levels>
 		<level name="base" mask="1"/>
@@ -956,7 +956,7 @@
 			</node>
 		</nodes>
 	</terrain>
-	<editor_data editor_camera_position="207.178, 185.983, 35.269" editor_camera_elevation="-0.741" editor_camera_bearing="-411.824" editor_camera_forward="-0.857, -0.107, -0.505" author="" comment="">
+	<editor_data editor_camera_position="207.178, 185.983, 35.269" editor_camera_elevation="-0.725" editor_camera_bearing="-410.813" editor_camera_forward="-0.288, -0.824, -0.489" author="" comment="">
 		<group_objects>
 			<group_object name="Group Object" guid="{FE211819-CDFC-489B-8A1C-18876DE25C21}"/>
 		</group_objects>
