@@ -1,8 +1,8 @@
 # Basic Settings
 ServerName [TSSL] Sample Server
 GameType Battle
-Map mp_battle_map_001
-add_map_to_automated_battle_pool mp_battle_map_001
+Map burried_playground
+add_map_to_automated_battle_pool burried_playground
 set_automated_battle_count -1
 
 # Culture Settings
@@ -43,6 +43,7 @@ disable_map_voting
 disable_culture_voting
 
 # Map Settings
+add_map_to_usable_maps burried_playground Battle
 add_map_to_usable_maps mp_battle_map_001 Battle
 add_map_to_usable_maps mp_battle_map_002 Battle
 add_map_to_usable_maps mp_battle_map_003 Battle
