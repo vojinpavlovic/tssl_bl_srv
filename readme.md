@@ -1,6 +1,12 @@
 # ☀ TSSL Bannerlord Server
 
-TSSL is a **dockerized** **Bannerlord server** setup that allows you to **quickly deploy** to Remote (Dedicated) server. This guide provides instructions for setting up the server manually, as well as automating the build and deployment process using **GitHub Actions** and **Docker**.
+TSSL is a **dockerized** **Bannerlord server** setup that allows you to **quickly deploy** to Dedicated server. This guide provides instructions for setting up the server manually, as well as automating the build and deployment process using **GitHub Actions** and **Docker**.
+
+#### Features:
+- **Building** and **Deploying** [Bannerlord Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/) using [Docker](https://docker.com), [Docker Hub](https://hub.docker.com) and [Github Actions](https://github.com/features/actions)
+- **Control** server instance and manage [Docker Container](https://www.docker.com/resources/what-container/).
+- [Github Workflows](https://docs.github.com/en/actions/writing-workflows/about-workflows) for deployment and [Enviornments for Deployment secrets](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) as a **Secret Vault**. 
+
 
 ---
 
@@ -31,9 +37,23 @@ docker build -t tssl_bl_srv .
     tssl_bl_srv
 ```
 
-- For more informations about Taleworld Token, check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
+####  ⚙️ Variables:
+- `TW_TOKEN="Your Taleworld Server Token"`
+    - This variable sets your Taleworld server token, which is required to authenticate and connect to the Taleworld multiplayer system. Replace "Your Taleworld Server Token" with your actual server token.
 
-- For more informations about Custom Modules, check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
+- `MODULES="_MODULES_*Native*Multiplayer*_MODULES_"`
+    - This variable defines the modules that will be loaded into the server. By default it loads "Native" and "Multiplayer" modules. You can customize this to include other modules.
+
+- `TICK_RATE=60`
+    - This variable controls the game's tick rate, which affects how often the game logic is updated. 
+
+- `SERVER_CFG="Native/server"`
+    - This variable specifies the server configuration to use. It points to the default "Native" configuration. You can customize this to load a different configuration from or a path.
+
+
+For more informations about Taleworld Token, check out [Taleworld - Hosting a Custom Server](https://moddocs.bannerlord.com/multiplayer/hosting_server/)
+
+For more informations about Custom Modules, check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
 
 ##### 👉 Note: 
 
