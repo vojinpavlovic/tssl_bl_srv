@@ -36,7 +36,7 @@ jobs:
       uses: actions/checkout@v4  
 
     - name: Make the script files executable
-      run: chmod +x ./scripts/ssh-prepare.sh ./scripts/deploy-instance.sh
+      run: chmod +x scripts/ssh-prepare.sh scripts/deploy-instance.sh
 
     - name: Set up SSH
       run: |
