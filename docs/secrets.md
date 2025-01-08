@@ -2,7 +2,7 @@
 
 Secrets are managed by [Environments for deployment](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment) on GitHub.
 
-![Secret Repository Example](docs/assets/images/secret-repository.png)
+![Secret Repository Example](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/assets/images/secret-repository.png)
 
 - `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets are used for [Docker Hub](https://docs.docker.com/docker-hub/quickstart/) (Account) access so it can push or pull docker images.
 - `DOCKER_REPOSITORY` [Docker Hub Repository](https://docs.docker.com/docker-hub/repos/) for storing images and it's build cache. 
