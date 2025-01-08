@@ -32,10 +32,16 @@ jobs:
       name: ${{ inputs.configuration-id }}
 
     steps:
+    - name: Check out the repository to the runner
+      uses: actions/checkout@v4  
+
+    - name: Make the script files executable
+      run: chmod +x ./scripts/ssh-prepare.sh ./scripts/deploy-instance.sh
+
     - name: Set up SSH
       run: |
-        scripts/ssh-prepare.sh
+        ./scripts/ssh-prepare.sh
 
     - name: Deploy on Remote Server
       run: |
-        scripts/deploy-instance.sh
+        ./scripts/deploy-instance.sh
