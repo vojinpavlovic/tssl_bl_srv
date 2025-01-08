@@ -67,14 +67,19 @@ Deploys a container on the Training Server (remote server) using the latest imag
 1. ✍️ **♻️ Enviornment Configuration Key**
     - 🏷️ `Type:` string
     - ✔️ `Required:` true
-    - ✏️ `Default Value:` none (must be existing)
+    - ✏️ `Default Value:` none 
     - 📙 `Description:` Github Enviornment repository name for deployment  
-2. ✍️ **Module Startup Command**
+2. ✍️ **⚙️ Server Configuration**
+    - 🏷️ `Type:` string
+    - ✔️ `Required:` true
+    - ✏️ `Default Value:` server.txt
+    - 📙 `Description:` Server Configuration file for Container Deployment 
+3. ✍️ **Module Startup Command**
     - 🏷️ `Type:` string
     - ✔️ `Required:` true
     - ✏️ `Default Value:` `_MODULES_*Native*Multiplayer*_MODULES_`
     - 📙 `Description:` Module list that Bannerlord Server will run.
-2. ✍️ **Tick Rate**
+4. ✍️ **Tick Rate**
     - 🏷️ `Type:` number
     - ✔️ `Required:` true
     - ✏️ `Default Value:` 60
@@ -117,6 +122,11 @@ Secrets are managed by [Environments for deployment](https://docs.github.com/en/
 - `SERVER_SSH_KEY` [SSH Key-Based Authentication on a Linux Server](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server) 
 - `TW_TOKEN` In Multiplayer Bannerlord `press Alt+~` then type `customserver.gettoken`. 
     - This should generate token in `C:\Users\Your User\Documents\Mount and Blade II Bannerlord\Tokens\DedicatedCustomServerAuthToken`
+
+---
+
+## ⚙️ Server Configuration
+- In progress..
 
 ---
 

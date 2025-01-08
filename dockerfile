@@ -70,7 +70,7 @@ WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
-COPY /config/server.cfg ${BANNERLORDDIR}/Modules/Native/ds_server_config.txt
+COPY /config/ ${BANNERLORDDIR}/Modules/Native/
 
 # Copy the map files from the host to the container
 COPY modules/ ${BANNERLORDDIR}/Modules/
@@ -82,5 +82,5 @@ EXPOSE 7210/tcp
 EXPOSE 7210/udp
 
 # Run the server
-CMD ["/bin/sh", "-c", "dotnet TaleWorlds.Starter.DotNetCore.Linux.dll $MODULES /dedicatedcustomserverconfigfile ../../Modules/Native/ds_server_config.txt /tickrate $TICK_RATE /dedicatedcustomserverauthtoken $TW_TOKEN /dedicatedcustomserver 7210 USER 0 /playerhosteddedicatedserver"]
+CMD ["/bin/sh", "-c", "dotnet TaleWorlds.Starter.DotNetCore.Linux.dll $MODULES /dedicatedcustomserverconfigfile ../../Modules/Native/$SERVER_CFG.txt /tickrate $TICK_RATE /dedicatedcustomserverauthtoken $TW_TOKEN /dedicatedcustomserver 7210 USER 0 /playerhosteddedicatedserver"]
 

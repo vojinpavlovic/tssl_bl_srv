@@ -10,6 +10,10 @@ on:
         description: "🏷️ Docker image version (DEFAULT latest)"
         required: true
         default: "latest"
+      server-cfg:
+        description: "⚙️ Server Configuration (default server)"
+        required: true 
+        default: "server"
       modules-str:
         description: "📦 Modules Startup Command (Default _MODULES_*Native*Multiplayer*_MODULES_)"
         required: true
@@ -60,6 +64,7 @@ jobs:
           -e TW_TOKEN=${{ secrets.TW_TOKEN }} \
           -e MODULES=${{ inputs.modules-str }} \
           -e TICK_RATE=${{ inputs.tick-rate }} \
+          -e SERVER_CFG=${{inputs.server-cfg}} \
           -p 7210:7210/tcp \
           -p 7210:7210/udp \
           ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ inputs.docker-image-version }}
