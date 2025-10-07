@@ -130,7 +130,7 @@ If you’re interested in hosting a Bannerlord server using his fork, check out 
 🎬 [Run a Bannerlord Server for $20-30 per month (Docker on Azure)](https://www.youtube.com/watch?v=tsPM8uUUVvQ&t=881s)
 
 ⚠️ **Note:** This tutorial uses the forked repository, not this original repository.  
-If you’re not sure how to run it, especially on Azure, it’s recommended to use the forked repository instead of this one.
+If you’re not sure how to run it, especially on Azure, it’s recommended to use his guide on Youtube and the forked repository instead of this one.
 
 ---
 
