@@ -96,4 +96,19 @@ Anything **placed** in the `modules/` directory will be copied to the `Modules/`
 
 ---
 
+## Contributing
+
+A huge thanks to [Fief Eviction Notice](https://github.com/fiefevictionnotice) for his contributions and fixes to this project!  
+
+His **forked repository** can be found here:  
+👉 [fief_tssl_bl_srv](https://github.com/fiefevictionnotice/fief_tssl_bl_srv)
+
+If you’re interested in hosting a Bannerlord server using his fork, check out his YouTube guide:  
+🎬 [Run a Bannerlord Server for $20-30 per month (Docker on Azure)](https://www.youtube.com/watch?v=tsPM8uUUVvQ&t=881s)
+
+⚠️ **Note:** This tutorial uses the forked repository, not this original repository.  
+If you’re not sure how to run it, especially on Azure, it’s recommended to use the forked repository instead of this one.
+
+---
+
 This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/LICENSE) file for more details.
