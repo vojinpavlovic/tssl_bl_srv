@@ -96,7 +96,30 @@ Anything **placed** in the `modules/` directory will be copied to the `Modules/`
 
 ---
 
-## Contributing
+## 🧩 Want to Contribute?
+
+Contributions are welcome! Here’s how you can get started:
+
+1. **Fork** this repository.  
+2. **Create a new branch** for your feature or fix:  
+```bash
+    git checkout -b your-branch-name
+```  
+3. Make your changes and commit them:
+```bash
+    git commit -m "Describe your change here"
+```
+4. Push your branch to your fork:
+```bash
+    git push origin your-branch-name
+```
+5. Open a Pull Request to this repository describing what you changed and why.
+
+> ! Please make sure your code follows the project’s style and doesn’t break existing functionality.
+Even small contributions like documentation fixes, cleanup, or performance tweaks are appreciated!
+---
+
+## 💖 Special Thanks
 
 A huge thanks to [Fief Eviction Notice](https://github.com/fiefevictionnotice) for his contributions and fixes to this project!  
 
