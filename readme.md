@@ -98,25 +98,15 @@ Anything **placed** in the `modules/` directory will be copied to the `Modules/`
 
 ## 🧩 Want to Contribute?
 
-Contributions are welcome! Here’s how you can get started:
+🧩 Want to Contribute?
 
-1. **Fork** this repository.  
-2. **Create a new branch** for your feature or fix:  
-```bash
-    git checkout -b your-branch-name
-```  
-3. Make your changes and commit them:
-```bash
-    git commit -m "Describe your change here"
-```
-4. Push your branch to your fork:
-```bash
-    git push origin your-branch-name
-```
-5. Open a Pull Request to this repository describing what you changed and why.
+If you're contributing, please follow the existing code style, structure, and conventions.
+- Keep formatting consistent (naming, spacing, indentation, etc.).
+- Write clear, minimal, and readable logic — match the surrounding code’s tone and design.
+- Keep functions modular and avoid unnecessary complexity.
+- If you’re adding new features, make sure they fit naturally with the current project flow.
+- Leave helpful comments only where logic isn’t obvious.
 
-> ! Please make sure your code follows the project’s style and doesn’t break existing functionality.
-Even small contributions like documentation fixes, cleanup, or performance tweaks are appreciated!
 ---
 
 ## 💖 Special Thanks
